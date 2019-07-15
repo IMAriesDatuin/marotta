@@ -1,0 +1,64 @@
+
+# CONTENT
+content:
+ -
+  id: 'home'
+  title: 'Home'
+  description: ''
+  link: 'home'
+
+
+ -
+  id: 'face'
+  title: 'Face'
+  description: ''
+  link: 'face'
+
+
+ -
+  id: 'body'
+  title: 'Body'
+  description: ''
+  link: 'body'
+
+
+ -
+  id: 'skin'
+  title: 'Skin'
+  description: ''
+  link: 'skin'
+
+
+ -
+  id: 'hair'
+  title: 'Hair'
+  description: ''
+  link: 'hair'
+
+
+ -
+  id: 'who-we-are'
+  title: 'Who We Are'
+  description: ''
+  link: 'about'
+
+
+ -
+  id: 'patient-resources'
+  title: 'Patient Resources'
+  description: ''
+  link: 'resources'
+
+
+ -
+  id: 'gallery'
+  title: 'Gallery'
+  description: ''
+  link: 'gallery'
+
+
+ -
+  id: 'shop'
+  title: 'Shop'
+  description: ''
+  link: 'shop'

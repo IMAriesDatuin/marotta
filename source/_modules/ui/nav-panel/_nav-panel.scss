@@ -1,0 +1,462 @@
+/* -------------------------------------------------- */
+/* NAV PANEL
+/* -------------------------------------------------- */
+
+// OPTIONS
+$nav-panel-options: (
+	font: $subheadline, // Defined the font for the text links.
+	text-color: $white, // Set the default color for all elements.
+	text-hover-color: $charcoal, // Set the hover color for all elements.
+	scrollbar: true, // Hide the nav panel's scrollbar. The nav panel will still be scrollable.
+	smooth-scroll: true, // Enable or disable the smooth scroll for touch devices.
+	bounce: false, // Preserve the bounce or glow effect when overscrolling on mobile devices (more notable in Android devices).
+	logo-color: none, // Set the color of the background logo.
+	background-color: $white, // Set the nav panel's background color.
+	blend-mode: exclusion, // Set the blend-mode when interacting with elements: color, color-burn, color-dodge, exclusion, darken, hue, lighten, luminosity, normal, hard-light, multiply, overlay, saturation, screen, soft-light
+	duration: 400ms, // Set the duration of the animation.
+	delay: 0, // Delay the animation by this amount. 
+	ease: $easeNatural // Set the easing type for this animation.
+);
+
+
+// MAIN
+.nav-panel {
+
+	$self: &;
+
+	pointer-events: none;
+	overflow: hidden;
+	opacity: 0;
+	visibility: hidden;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding-top: 2rem;
+	width: 100%;
+	height: 100%;
+	min-height: 100vh;
+	-webkit-overflow-scrolling: touch;
+
+	nav {
+
+		pointer-events: none;
+		z-index: 3;
+		position: relative;
+		margin: {
+			left: auto;
+			right: auto;
+		}
+		padding: $gutter;
+		width: 90%;
+
+		#{$self}-menu {
+
+			li {
+
+				@include transition(
+					$property: (color, filter),
+					$duration: map-get($nav-panel-options, duration),
+					$delay: map-get($nav-panel-options, delay),
+					$ease: map-get($nav-panel-options, ease),
+					$optimize: false
+				);
+				overflow: hidden;
+				display: block;
+				position: relative;
+				color: $black;
+				font: map-get($nav-panel-options, font);
+				font-size: 4em;
+				text-shadow: -1px -1px 0 map-get($nav-panel-options, text-color),
+							 1px -1px 0 map-get($nav-panel-options, text-color),
+							 -1px 1px 0 map-get($nav-panel-options, text-color),
+							 1px 1px 0 map-get($nav-panel-options, text-color);
+
+				@include break($min: 0, $max: $mobile, $orientation: 'both') {
+					color: map-get($nav-panel-options, text-color);
+					font: $headline;
+					text-shadow: none;
+				}			 
+
+				a {
+					
+					@include transition(
+						$property: (color),
+						$duration: map-get($nav-panel-options, duration),
+						$delay: map-get($nav-panel-options, delay),
+						$ease: map-get($nav-panel-options, ease),
+						$optimize: false
+					);
+					pointer-events: all;
+					overflow: hidden;
+					position: relative;
+					//color: map-get($nav-panel-options, text-color);
+					color: inherit;
+					font: inherit;
+					font-size: inherit;
+					text-transform: uppercase;
+					white-space: nowrap;
+
+					&::before {
+						@include transition(
+							$property: (width),
+							$duration: map-get($nav-panel-options, duration),
+							$delay: map-get($nav-panel-options, delay),
+							$ease: map-get($nav-panel-options, ease),
+							$optimize: false
+						);
+						content: attr(data-letters);
+						z-index: 1;
+						overflow: hidden;
+						position: absolute;
+						//top: 0;
+						left: 0;
+						width: 0%;
+						height: 100%;
+						color: map-get($nav-panel-options, text-hover-color);
+						/*
+						text-shadow: -1px -1px 0 map-get($nav-panel-options, text-color),  
+									1px -1px 0 map-get($nav-panel-options, text-color),
+									-1px 1px 0 map-get($nav-panel-options, text-color),
+									1px 1px 0 map-get($nav-panel-options, text-color);
+						*/
+						background: map-get($nav-panel-options, text-color);
+					}
+
+					&:hover {
+
+						color: map-get($nav-panel-options, text-hover-color);
+
+						&::before {
+							width: 100%;
+						}
+
+					}
+
+				}
+
+				&:not(:last-child)::after {
+
+					content: '/';
+					display: none;
+					margin: { 
+						left: 0.5rem;
+						right: 0.5rem;
+					}
+					color: inherit;
+
+					@include break($min: $mobile, $max: 1043px, $orientation: 'portrait') {
+						display: none;
+					}
+
+					@include break($min: 0, $max: $mobile, $orientation: 'landscape') {
+						display: none;
+					}
+
+				}
+
+				&::before {
+					@include transition(
+						$property: (transform),
+						$duration: map-get($nav-panel-options, duration),
+						$delay: map-get($nav-panel-options, delay),
+						$ease: map-get($nav-panel-options, ease),
+						$optimize: false
+					);
+					content: '';
+					z-index: 1;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					border-top: 1px solid map-get($nav-panel-options, background-color);
+					//border-bottom: 1px solid map-get($nav-panel-options, background-color);
+					//background: map-get($quotes-options, background-color);
+					transform: scale3d(1,1,1);
+					transform-origin: left center;
+				}
+
+				&:last-child::before {
+					border-bottom: 1px solid map-get($nav-panel-options, background-color);
+				}
+
+				&#{$self}-menu-reveal {
+
+					color: map-get($nav-panel-options, text-color);
+
+					&::before {
+						transform: scale3d(0,1,1);
+						transform-origin: right center;
+					}
+
+				}
+
+				&.is-active {
+					cursor: not-allowed;
+					pointer-events: none;
+				}
+
+				@include break($min: 0, $max: $laptop, $orientation: 'landscape') {
+					font-size: 4em;
+				}
+
+				@include break($min: 0, $max: $mobile, $orientation: 'both') {
+					display: block;
+					font-size: 2em;
+				}
+
+			}
+
+		}
+
+		#{$self}-social {
+
+			margin-top: 6rem;
+			padding-bottom: 5rem;
+			list-style: none;
+
+			li {
+
+				overflow: hidden;
+				display: inline-block;
+
+				a {
+
+					@include transition(
+						$property: (color),
+						$duration: map-get($nav-panel-options, duration),
+						$delay: map-get($nav-panel-options, delay),
+						$ease: map-get($nav-panel-options, ease),
+						$optimize: false
+					);
+					pointer-events: all;
+					overflow: hidden;
+					position: relative;
+					color: map-get($nav-panel-options, text-color);
+					font: map-get($nav-panel-options, font);
+					font-size: 1em;
+					white-space: nowrap;
+
+					&::before {
+						@include transition(
+							$property: (width),
+							$duration: map-get($nav-panel-options, duration),
+							$delay: map-get($nav-panel-options, delay),
+							$ease: map-get($nav-panel-options, ease),
+							$optimize: false
+						);
+						content: attr(data-letters);
+						z-index: 1;
+						overflow: hidden;
+						position: absolute;
+						//top: 0;
+						left: 0;
+						width: 0%;
+						height: 100%;
+						color: map-get($nav-panel-options, text-hover-color);
+						background: map-get($nav-panel-options, text-color);
+					}
+
+					&:hover {
+
+						color: map-get($nav-panel-options, text-hover-color);
+
+						&::before {
+							width: 100%;
+						}
+
+					}
+
+				}
+
+				&:not(:last-child)::after {
+					color: map-get($nav-panel-options, text-color);
+				}
+				
+			}
+
+		}
+
+		@include break($min: 0, $max: $mobile, $orientation: '') {
+			width: 100%;
+		}
+
+	}
+
+	&-fade {
+
+		pointer-events: none;
+		z-index: 4;
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100px;
+		background: linear-gradient(to bottom, rgba(map-get($nav-panel-options, text-hover-color), 1) 0%, rgba(map-get($nav-panel-options, text-hover-color), 0) 100%);
+
+		@include break($min: 0, $max: $laptop, $orientation: 'landscape') {
+			display: block;
+		}
+
+	}
+
+	&-background {
+
+		z-index: 0;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		//background: map-get($nav-panel-options, text-color);
+		//transform: scale3d(0,1,1);
+		transform-origin: center center;
+
+		span {
+
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			//transform: scale3d(0,1,1);
+			transform-origin: left center;
+
+			&:nth-of-type(1) {
+				background: map-get($nav-panel-options, text-color);
+				//background: linear-gradient(to right, rgba($black,0) 0%, rgba($black,1) 25%, rgba($black,1) 75%, rgba($black,0) 100%);
+				//mix-blend-mode: map-get($nav-panel-options, blend-mode); 
+			}
+
+			&:nth-of-type(2) {
+				background: map-get($nav-panel-options, text-hover-color);
+			}
+
+		}
+
+	}
+
+	@include break($min: 0, $max: $mobile, $orientation: 'landscape') {
+		justify-content: flex-start;
+		padding-top: 10rem;
+	}
+
+}
+
+
+// MODIFIERS
+.nav-panel {
+
+	$self: &;
+
+	&.is-opening {
+
+		pointer-events: none;
+		opacity: 1;
+		visibility: visible;
+		//display: flex;
+
+		#{$self}-background {
+
+			span {
+				transform-origin: left center;
+			}
+
+		}
+
+	}
+
+	&.is-open {
+
+		pointer-events: auto;
+		overflow: auto;
+		//opacity: 1;
+		//visibility: visible;
+
+		#{$self}-background {
+
+			span {
+				transform-origin: right center;
+			}
+			
+		}
+
+	}
+
+	&.is-closing {
+
+	}
+
+	&.is-closed {
+
+	}
+
+}
+
+
+// HTML
+html {
+
+	&.is-locked {
+		cursor: default !important;
+		//visibility: visible;
+		overflow: {
+			x: hidden;
+			y: hidden;
+		}
+	}
+
+}
+
+
+// LOGIC
+@if map-get($nav-panel-options, scrollbar) == false {
+
+	.nav-panel {
+
+		-ms-overflow-style: none;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+	}
+
+}
+
+@if map-get($nav-panel-options, smooth-scroll) == false {
+
+	.nav-panel {
+		-webkit-overflow-scrolling: auto;
+	}
+
+}
+
+@if map-get($nav-panel-options, bounce) == false {
+
+	.nav-panel {
+		overscroll-behavior: none;
+	}
+
+}
+
+@if map-get($nav-panel-options, bounce) == 'contain' {
+
+	.nav-panel {
+		overscroll-behavior: contain;
+	}
+
+}

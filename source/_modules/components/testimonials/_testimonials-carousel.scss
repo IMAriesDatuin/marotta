@@ -1,0 +1,355 @@
+/* -------------------------------------------------- */
+/* TESTIMONIALS CAROUSEL
+/* -------------------------------------------------- */
+
+// OPTIONS
+$testimonials-carousel-options: (
+	background-color: $accent,
+	duration: 250ms,
+	delay: 0,
+	ease: $easeNatural
+);
+
+
+// MAIN
+.testimonials-carousel {
+
+	/*
+	@include fade(
+		$type: 'top',
+		$color: map-get($testimonials-carousel-options, background-color),
+		$alpha: 1,
+		$scale: 100%,
+		$start: 0%,
+		$stop: 100%,
+		$order: -1,
+		$prefix: '',
+		$suffix: '::before',
+		$is-fixed: false,
+		$clickable: false
+	);
+	*/
+	//overflow: hidden;
+	height: auto;
+	//height: 100%;
+
+	.flickity-viewport {
+
+		overflow: hidden;
+
+		.flickity-slider {
+			display: flex;
+			//flex: 1 auto;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			align-items: stretch;
+			//justify-content: center;
+			height: 100%;
+		}
+
+	}
+
+	.carousel-cell {
+
+		$self: &;
+
+		overflow: hidden;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		justify-content: flex-start;
+		width: 33%;
+		//height: auto;
+		min-height: 100%;
+		border: thin solid $gray;
+		border-right: none;
+		background: $white;
+
+		&:last-child {
+			border-right: thin solid $gray;
+		}
+
+		.text-block {
+
+			background: transparent;
+
+			.headline {
+
+				margin-bottom: 1rem;
+				padding: 0;
+				font-size: 1.75em;
+				letter-spacing: 0;
+
+				&-title {
+					
+				}
+
+				&-subtitle {
+					color: $gray;
+					font-size: 0.75em;
+					text-shadow: none;
+				}
+
+			}
+
+			p {
+				//line-height: 1em;
+				border: 0;
+			}
+
+			/*
+			&::before {
+				@include icon($type: 'solid', $icon: 'f10d');
+				top: 0.75em;
+				left: 0.25em;
+				color: lighten($gray, 10%);
+				font-size: 3em;
+			}
+			*/
+
+		}
+
+		&.is-selected,
+		&.is-settled {
+
+		}
+
+		@include break($min: $mobile, $max: $tablet, $orientation: 'both') {
+			width: 50%;
+		}
+
+		@include break($min: 0, $max: $mobile, $orientation: 'portrait') {
+			width: 100%;
+		}
+
+		@include break($min: 0, $max: $mobile, $orientation: 'landscape') {
+			width: 50%;
+		}
+
+	}
+
+	.flickity-custom-prev-next-button {
+
+		position: absolute;
+		top: -75px;
+		right: 0;
+		width: auto;
+		height: 75px;
+
+		.flickity-custom-prev,
+		.flickity-custom-next {
+
+			@include transition(
+				$property: (color, background),
+				$duration: map-get($testimonials-carousel-options, duration),
+				$delay: map-get($testimonials-carousel-options, delay),
+				$ease: map-get($testimonials-carousel-options, ease),
+				$optimize: false
+			);
+			cursor: pointer;
+			float: left;
+			display: inline-flex;
+			position: relative;
+			flex-wrap: nowrap;
+			align-items: center;
+			justify-content: center;
+			width: 75px;
+			height: 75px;
+			color: $charcoal;
+			font-size: 1.25em;
+			background: $white;
+
+			&:hover {
+				color: $secondary;
+			}
+
+		}
+
+	}
+
+	.flickity-prev-next-button {
+
+		@include transition(
+			$property: (opacity),
+			$duration: 400ms,
+			$delay: 0,
+			$ease: $easeNatural,
+			$optimize: false
+		);
+		//pointer-events: none;
+		opacity: 1;
+		overflow: hidden;
+		//display: none;
+		width: 8%;
+		height: 100%;
+		border-radius: 0;
+		background: transparent;
+
+		svg {
+			display: none;
+		}
+
+		&:hover {
+			opacity: 1;
+		}
+
+		&.previous {
+
+			@include fade(
+				$type: 'left',
+				$color: $white,
+				$alpha: 1,
+				$scale: 100%,
+				$start: 0%,
+				$stop: 100%,
+				$order: 1,
+				$prefix: '',
+				$suffix: '::before',
+				$is-fixed: false,
+				$clickable: true
+			);
+			left: -1px;
+
+			&.is-disabled {
+				pointer-events: none;
+				opacity: 0;
+			}
+
+		}
+
+		&.next {
+
+			@include fade(
+				$type: 'right',
+				$color: $white,
+				$alpha: 1,
+				$scale: 100%,
+				$start: 0%,
+				$stop: 100%,
+				$order: 1,
+				$prefix: '',
+				$suffix: '::before',
+				$is-fixed: false,
+				$clickable: true
+			);
+			right: -1px;
+
+			&.is-disabled {
+				pointer-events: none;
+				opacity: 0;
+			}
+
+		}
+
+	}
+
+	.flickity-page-dots {
+
+		display: none;
+		position: relative;
+
+		&::after { // Line
+			content: '';
+			z-index: -1;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 100%;
+			height: 1px;
+			border-top: 1px solid rgba($gray, 0.5);
+			transform: translate(-50%,-50%);
+		}
+
+		li { // Dot
+
+			@include transition(
+				$property: (opacity, border, background, transform),
+				$duration: 200ms,
+				$delay: 0,
+				$ease: $easeNatural,
+				$optimize: false
+			);
+			opacity: 1;
+			overflow: visible;
+			position: relative;
+			margin-right: 15rem;
+			padding: {
+				left: 0;
+				right: 0;
+			}
+			width: 25px;
+			height: 25px;
+			border: 1px solid rgba($gray, 0.5);
+			background: $white;
+
+			&:last-child {
+				margin-right: 0;
+			}
+
+			&::before { // Inner dot (selected)
+				@include transition(
+					$property: (opacity, border, background, transform),
+					$duration: 200ms,
+					$delay: 0,
+					$ease: $easeNatural,
+					$optimize: false
+				);
+				content: '';
+				z-index: 1;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 75%;
+				height: 75%;
+				border-radius: 100%;
+				background: $secondary;
+				transform: translate(-50%,-50%) scale3d(0,0,1);
+			}
+
+			&.is-selected {
+
+				border-color: $secondary;
+				//background: $primary;
+
+				&::before {
+					transform: translate(-50%,-50%) scale3d(1,1,1);
+				}
+
+			}
+
+			@include break($min: $tablet, $max: 1500px, $orientation: '') {
+				margin-right: 10rem;
+			}
+
+			@include break($min: $mobile, $max: $tablet, $orientation: '') {
+				margin-right: 8rem;
+			}
+
+			@include break($min: 0, $max: $mobile, $orientation: '') {
+				margin-right: 2rem;
+				width: 20px;
+				height: 20px;
+			}
+
+		}
+
+	}
+
+}
+
+
+// MODIFIERS
+.testimonials-carousel {
+
+	$self: &;
+
+	&.is-first-cell {
+		
+	}
+
+	&.is-last-cell {
+		
+	}
+
+}

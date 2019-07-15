@@ -1,0 +1,19 @@
+
+<!-- CONTENT: CONTACT INFO -->
+<ul class="contact">
+
+	{{#each contact.content}}
+	<li>
+
+		<a href="{{ link }}" aria-label="{{ description }}" data-no-swup>
+
+			<span class="fas fa-{{ icon }}" aria-hidden="true"></span>
+			<p>{{ description }}</p>
+
+		</a>
+
+	</li>
+	{{/each}}
+
+</ul>
+<!-- // CONTENT: CONTACT INFO -->

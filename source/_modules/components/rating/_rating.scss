@@ -1,0 +1,20 @@
+/* -------------------------------------------------- */
+/* TILES
+/* -------------------------------------------------- */
+
+// OPTIONS
+$rating-options: (
+	duration: 600ms,
+	delay: 0,
+	ease: $easeNatural
+);
+
+
+// MAIN
+.rating {
+	display: inline-block;
+	width: 100%;
+	color: $charcoal;
+	font-size: 1em;
+	text-align: center;
+}

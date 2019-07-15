@@ -1,0 +1,122 @@
+
+<!-- CONTENT: FOOTER -->
+<footer id="footer" class="footer" data-page={{ page }}>
+
+
+	{{> block-cap-double-top}}
+
+
+	<!-- GRID -->
+	<div class="footer-container grid-x align-bottom align-left small-up-1 medium-up-2 large-up-3 io">
+
+
+		<!-- MENU -->
+		<ul class="cell small-order-2 medium-order-1 large-order-1 footer-menu io-list">
+
+			{{#each menu.content}}
+			<li>
+
+				<a href="--url/{{ link }}" class="{{ id }}">
+					{{ title }}
+				</a>
+
+			</li>
+			{{/each}}
+
+		</ul>
+		<!-- // MENU -->
+
+
+		<!-- INFO -->
+		<div class="cell small-order-3 medium-order-2 large-order-2">
+
+
+			<!-- CONTACT -->
+			<ul class="footer-contact shrink io-list">
+
+				<li><a href="tel:+1--phone" aria-label="Contact us at: --phone for a consultation." data-no-swup>--phone</a></li>
+				<li><a href="--email" aria-label="Email us at: --email for a consultation." data-no-swup>--email</a></li>
+				<li><a href="#" aria-label="--adddress">--address</a></li>
+
+			</ul>
+			<!-- // CONTACT -->
+
+
+			<!-- SOCIAL -->
+			<ul class="footer-social social io-list">
+
+				{{#each social.content}}
+				<li>
+
+					<a href="{{ link }}" target="_blank" class="no-link" aria-label="{{ description }}">
+						<p>{{ title }}</p>
+						<span class="fab fa-{{ icon }}" aria-hidden="true"></span>
+					</a>
+
+				</li>
+				{{/each}}
+
+			</ul>
+			<!-- // SOCIAL -->
+
+
+		</div>
+		<!-- // INFO -->
+
+
+		<!-- FORM -->
+		<div class="cell small-order-1 medium-order-3 large-order-3 footer-form form">
+			
+
+			<!-- FIELDS -->
+			<ul>
+
+				<li>Name</li>
+				<li>Phone</li>
+				<li>Email</li>
+				<li>Questions / Comments</li>
+
+			</ul>
+			<!-- // FIELDS -->
+
+
+			<!-- BUTTON -->
+			<a href="#" class="button button-theme button-theme-reverse button-large io-button">
+				<span class="button-label">Submit</span>
+				<span class="button-icon fal fa-long-arrow-right"></span>
+				<span class="button-icon fal fa-long-arrow-right"></span>
+			</a>
+			<!-- // BUTTON -->	
+
+
+		</div>
+		<!-- // FORM -->
+
+	</div>
+	<!-- // GRID -->
+
+
+	<!-- LEGAL -->
+	<ul class="footer-legal list-separator">
+		<li>&copy;--year --name</li>
+		<li><a href="--url/legal">HIPAA</a></li>
+		<li><a href="--url/legal">Patient Rights &amp; Responsibilities</a></li>
+		<li><a href="--url/legal">Terms of Service</a></li>
+		<li><a href="--url/legal#privacy-policy">Privacy Policy</a></li>
+		<li><a href="https://incrediblemarketing.com" target="_blank" class="made-by"><span class="fas fa-heart margin-right-xs"></span>be incredible.</a></li>
+	</ul>
+	<!-- LEGAL -->
+
+
+	<a href="#welcome" class="footer-back-to-top" aria-label="Back to top."><span class="fal fa-arrow-to-top margin-right-xs" aria-hidden="true"></span></a>
+
+
+	<!-- BACKGROUND -->
+	<!--
+	<div class="footer-background lazy fade-top" data-bg="url({{ root }}{{ assets }}backgrounds/pattern-floral.png)"></div>
+	-->
+	<!-- // BACKGROUND -->
+
+
+</footer>
+<!-- // CONTENT: FOOTER -->

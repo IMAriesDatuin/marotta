@@ -1,0 +1,70 @@
+/* -------------------------------------------------- */
+/* BLOCK CAP
+/* -------------------------------------------------- */
+
+// OPTIONS
+$block-cap-options: (
+	duration: 400ms,
+	delay: 0,
+	ease: $easeNatural
+);
+
+
+// MAIN
+.block-cap {
+
+	@include transition(
+		$property: (transform),
+		$duration: map-get($block-cap-options, duration),
+		$delay: map-get($block-cap-options, delay),
+		$ease: map-get($block-cap-options, ease),
+		$optimize: false
+	);
+	pointer-events: none;
+	display: block;
+	position: absolute;
+	left: 0;
+	margin: {
+		left: auto;
+		right: auto;
+	}
+	width: 100%;
+	height: 100px;
+	fill: map-get($block-cap-options, background-color);
+
+	ellipse, line,
+	path, polygon,
+	polyline, rect {
+
+		@include transition(
+			$property: (fill, stroke),
+			$duration: map-get($block-cap-options, duration),
+			$delay: map-get($block-cap-options, delay),
+			$ease: map-get($block-cap-options, ease),
+			$optimize: false
+		);		
+		fill: $white;
+		stroke: none;
+		/*
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		stroke-miterlimit: 0;
+		stroke-width: 3px
+		*/
+
+	}
+
+	&-top {
+		top: -1px;
+		bottom: auto;
+		transform: scaleX(-1) scaleY(-1);
+		transform-origin: top center;
+	}
+
+	&-bottom {
+		top: auto;
+		bottom: -1px;
+		transform-origin: bottom center;
+	}
+
+}

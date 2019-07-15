@@ -1,0 +1,125 @@
+/* -------------------------------------------------- */
+/* FORM
+/* -------------------------------------------------- */
+
+// OPTIONS
+$form-options: (
+	text-color: $dark-gray,
+	text-hover-color: $white,
+	background-color: $accent,
+	background-hover-color: $secondary,
+	duration: 200ms,
+	delay: 0,
+	ease: $easeNatural
+);
+
+
+// MAIN
+/*
+@include transition(
+	$property: (opacity, box-shadow, transform),
+	$duration: map-get($form-options, duration),
+	$delay: map-get($form-options, delay),
+	$ease: map-get($form-options, ease),
+	$optimize: true
+);
+@include shadow(
+	$type: 'box-shadow',
+	$color: #0f3b60,
+	$x: 0,
+	$y: 2px,
+	$blur: 10px,
+	$spread: 0,
+	$alpha: 0.1,
+	$strength: 0.2,
+	$inset: false
+);
+*/
+
+
+
+
+form {
+
+	width: 100%;
+
+	::placeholder {
+		color: $gray;
+	}
+
+	input[type=text], input[type=number], input[type=password],
+	//input[type=reset], input[type=submit],
+	textarea, select {
+
+		@include transition(
+			$property: (opacity, color, border, background, box-shadow, transform),
+			$duration: map-get($form-options, duration),
+			$delay: map-get($form-options, delay),
+			$ease: map-get($form-options, ease),
+			$optimize: true
+		);
+		width: 100%;
+		height: 35px;
+		color: $dark-gray;
+		font: $subheadline;
+		font-size: 1em;
+		border-radius: 5px;
+		border: 1px solid $gray;
+		background-color: $white;
+
+		&:focus {
+			border: 2px solid $primary;
+			box-shadow: none;
+		}
+
+		&:required {
+			
+		}
+
+	}
+
+	label {
+		display: none;
+		margin-bottom: 1rem;
+		color: $dark-gray;
+		font: $subheadline;
+		font-size: 1em;
+	}
+
+	textarea {
+		height: 200px;
+		max-height: 300px;
+		//resize: vertical;
+		resize: none;
+	}
+
+	input[type=submit] {
+
+		/*
+		@include transition(
+			$property: (opacity, color, border, background),
+			$duration: map-get($form-options, duration),
+			$delay: map-get($form-options, delay),
+			$ease: map-get($form-options, ease),
+			$optimize: true
+		);
+		*/
+		margin-top: 2rem;
+		width: 100%;
+		height: 35px;
+		color: $white;
+		font: $subheadline;
+		//text-transform: uppercase;
+		//border: 2px solid $primary;
+		background: $secondary;
+
+		&:hover, &:focus {
+			color: map-get($form-options, text-hover-color);
+			//border-color: map-get($form-options, background-hover-color);
+			//background: darken(map-get($form-options, background-hover-color), 10%);
+			background: $black;
+		}
+
+	}
+
+}

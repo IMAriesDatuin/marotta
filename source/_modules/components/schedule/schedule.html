@@ -1,0 +1,24 @@
+
+<!-- CONTENT: TIMELINE CAROUSEL -->
+<article class="schedule">
+
+
+	<h2>Upcoming events we're attending:</h2>
+
+
+	<ul>
+
+		{{#each schedule.content}}
+		<li class="grid-x medium-up-2 small-up-2">
+
+			<div class="cell">{{ date }} - {{ location }}</div>
+			<div class="cell">{{ event }}</div>
+
+		</li>
+		{{/each}}
+
+	</ul>
+
+
+</article>
+<!-- // CONTENT: TIMELINE CAROUSEL -->

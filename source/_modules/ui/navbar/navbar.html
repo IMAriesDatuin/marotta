@@ -1,0 +1,65 @@
+
+<!-- CONTENT: NAVBAR -->
+<header id="navbar" class="navbar headroom">
+
+
+	<!-- GRID -->
+	<div class="menubar">
+
+
+		<!-- LOGO -->
+		<a href="/" class="menubar-logo" aria-label="--name" >
+
+			{{> logo-icon}}
+
+		</a>
+		<!-- // LOGO -->
+
+
+		<!-- MENU -->
+		<nav class="menubar-menu no-cursor">
+
+			<ul>
+
+				{{#each menu.content}}
+				<li>
+
+					<a href="--url/{{ link }}" class="{{ id }}">{{ title }}</a>
+
+				</li>
+				{{/each}}
+
+			</ul>
+
+		</nav>
+		<!-- // MENU -->
+
+
+		<!-- BUTTON: CTA -->
+		<a href="--url/#" class="menubar-cta button button-theme">
+			<span class="button-label">Contact us --phone</span>
+			<span class="button-icon fal fa-phone"></span>
+			<span class="button-icon fal fa-long-arrow-right"></span>
+		</a>
+		<!-- // BUTTON: CTA -->
+
+
+		<!-- MENU TOGGLE -->
+		<div class="menubar-toggle menu-toggle headroom">
+
+			<button class="menubar-toggle-label no-waves" type="button" aria-label="Open or close main site navigation."></button>
+			
+			<button class="menubar-toggle-icon no-waves" type="button" aria-label="Open or close main site navigation.">
+				<span></span>
+			</button>
+
+		</div>
+		<!-- // MENU TOGGLE -->
+
+
+	</div>
+	<!-- GRID -->
+
+
+</header>
+<!-- // CONTENT: NAVBAR -->

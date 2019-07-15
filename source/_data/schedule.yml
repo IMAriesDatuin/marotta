@@ -1,0 +1,23 @@
+
+# CONTENT
+content:
+ -
+  id: ''
+  date: 'JUN 12'
+  location: 'Miami FL'
+  event: 'IVC 2019'
+
+
+ -
+  id: ''
+  date: 'JUN 22'
+  location: 'New York NY'
+  event: 'ASAPS'
+
+
+ -
+  id: ''
+  date: 'AUG 11'
+  location: 'Sydney AUS'
+  event: 'Cosmetex 2019'
+  

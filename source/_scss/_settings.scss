@@ -1,0 +1,307 @@
+/* -------------------------------------------------- */
+/* NAMING CONVENTIONS (OPTIONAL)
+/* -------------------------------------------------- */
+
+// You will need to update your HTML templates, partials
+// and any selector references made in your JS files if
+// any changes are made to the 'Naming Conventions' settings.
+
+
+// BEM
+$modifier: '-';
+$component: '';
+$utility: '';
+
+
+/* -------------------------------------------------- */
+/* BROWSER UI THEME / BEHAVIOR
+/* -------------------------------------------------- */
+
+// OPTIONS
+$customize-scrollbar: true;
+$show-scrollbar: true; // Completely removes the scrollbar from the user's browser window. Recommened to leave 'true'.
+
+
+// SCROLL
+$scroll-width: 10px;
+
+
+// SCROLL UP / DOWN BUTTONS
+$scroll-button-height: 0;
+$scroll-button-radius: 0;
+$scroll-button-color: #13b5b2;
+$scroll-button-hover-color: #69aaab;
+
+
+// SCROLL BAR
+$scrollbar-radius: 0;
+$scrollbar-color: #13b5b2;
+$scrollbar-hover-color: #69aaab;
+
+
+// SCROLL TRACK
+$scroll-track-color: #f5f5f5;
+$scroll-track-hover-color: #f5f5f5;
+
+
+// SELECTION
+$selection-text-color: white;
+$selection-background: black; // While background images or gradients are allowed it is recommened to use a solid color.
+
+
+/* -------------------------------------------------- */
+/* COLORS
+/* -------------------------------------------------- */
+
+// THEME
+$colors: (
+	primary: #69aaab,
+	secondary: #13b5b2,
+	accent: #00fffb,
+	white: white,
+	light-gray: #fafafa,
+	gray: #c8c8c8,
+	dark-gray: #39383e,
+	charcoal: #29292e,
+	black: #11111e,
+	ok: #0f0,
+	warning: #fc0,
+	error: #f00,
+	transparent: transparent
+) !default;
+
+
+// DOCUMENT
+$html-background: transparent;
+$body-background: white;
+$main-background: transparent !default;
+$section-background: transparent !default;
+
+
+// MODIFIERS
+$lighten: 10%; // Adjust the amount of white added to a color.
+$darken: 10%; // Adjust the amount of black added to a color.
+
+
+/* -------------------------------------------------- */
+/* TYPOGRAPHY
+/* -------------------------------------------------- */
+
+// FAMILIES (font: font-style font-variant font-weight font-size/line-height font-family;)
+$headline: normal normal 700 1em/100% futura-pt, sans-serif !default;
+$subheadline: normal normal 500 1em/100% futura-pt, sans-serif !default;
+$copy: normal normal 400 1em/100% futura-pt, sans-serif !default;
+$font-stack: normal normal 1em/100% -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, Ubuntu, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol' !default;
+$font-icon: 'Font Awesome 5 Pro';
+$font-icon-brand: 'Font Awesome 5 Brands';
+
+
+// PROPERTIES
+$headline-margin: 1rem !default;
+$headline-line-height: 1em !default;
+$copy-letter-spacing: 0em !default
+$copy-line-height: 1.6em !default
+$copy-color: #29292e !default;
+
+$base-font-size: 1.6rem !default;
+$base: 16px !default;
+
+
+// OPTIONS
+$justify-text-on-mobile: false;
+
+
+//SIZES
+$font-sizes: (
+	1: 48px,
+	2: 42px,
+	3: 36px,
+	4: 32px,
+	5: 28px,
+	6: 24px
+) !default;
+
+
+/* -------------------------------------------------- */
+/* BREAKPOINTS
+/* -------------------------------------------------- */
+
+$breakpoints: (
+	mobile: 667px,
+	tablet: 768px,
+	laptop: 1366px,
+	desktop: 2460px
+);
+
+
+/* -------------------------------------------------- */
+/* GUTTERS (MARGINS / PADDING)
+/* -------------------------------------------------- */
+
+$gutters: (
+	xs: 0.25rem,
+	sm: 1rem,
+	md: 2rem,
+	lg: 10rem,
+	xl: 32rem,
+	global: 3rem, // Used for consistent padding across all text blocks and other elements.
+	none: 0
+) !default;
+
+
+/* -------------------------------------------------- */
+/* SIZES
+/* -------------------------------------------------- */
+
+$widths: (
+	xs: 800px,
+	sm: 1024px,
+	md: 1440px,
+	lg: 1920px,
+	xl: 2560px,
+	25: 25%,
+	50: 50%,
+	75: 75%,
+	100: 100%
+) !default;
+
+
+$heights: (
+	xs: 600px,
+	sm: 768px,
+	md: 900px,
+	lg: 1080px,
+	xl: 1440px,
+	25: 25vh,
+	50: 50vh,
+	75: 75vh,
+	100: 100vh
+) !default;
+
+
+/* -------------------------------------------------- */
+/* LAYOUT
+/* -------------------------------------------------- */
+
+// STACK ORDER (Z-INDEX)
+$stack-order: (
+	'#scroll-progress': -1,
+	'main': 1,
+	'section': auto,
+	'footer': 2,
+	'#blocker': 3,
+	'#legal': 4,
+	'#nav-panel': 5,
+	'#music-player': 6,
+	'#navbar': 7,
+	'#cursor': 8,
+	'#page-transition': 9,
+	'#film-grain': 10
+);
+
+
+// CONTENT
+$main: (
+
+	margin: (
+
+		top: 0,
+		right: auto,
+		bottom: 0,
+		left: auto,
+
+		top-mobile: 0,
+		right-mobile: auto,
+		bottom-mobile: 0,
+		left-mobile: auto
+		
+	),
+
+	padding: (
+
+		top: 0,
+		right: 0,
+		bottom: 0,
+		left: 0,
+
+		top-mobile: 0,
+		right-mobile: 0,
+		bottom-mobile: 0,
+		left-mobile: 0
+
+	),
+
+	width: 100%,
+
+) !default;
+
+
+$section: (
+
+	margin: (
+
+		top: 32rem,
+		right: auto,
+		bottom: 32rem,
+		left: auto,
+
+		top-mobile: 16rem,
+		right-mobile: auto,
+		bottom-mobile: 16rem,
+		left-mobile: auto
+
+	),
+
+	padding: (
+
+		top: 0,
+		right: 0,
+		bottom: 0,
+		left: 0,
+
+		top-mobile: 0,
+		right-mobile: 0,
+		bottom-mobile: 0,
+		left-mobile: 0
+
+	),
+
+	width: 1920px,
+
+) !default;
+
+
+$cell: (
+
+	margin: (
+		top: 0,
+		right: 0,
+		bottom: 0,
+		left: 0,
+
+		top-mobile: 0,
+		right-mobile: 0,
+		bottom-mobile: 0,
+		left-mobile: 0
+	),
+
+	padding: (
+		top: 0,
+		right: 0,
+		bottom: 0,
+		left: 0,
+
+		top-mobile: 0,
+		right-mobile: 0,
+		bottom-mobile: 0,
+		left-mobile: 0
+	)
+
+) !default;
+
+
+/* -------------------------------------------------- */
+/* TRANSITIONS
+/* -------------------------------------------------- */
+
+$timescale: 1;

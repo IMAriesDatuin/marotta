@@ -1,0 +1,78 @@
+/* -------------------------------------------------- */
+/* LOGO
+/* -------------------------------------------------- */
+
+.logo {
+
+	@include transition(
+		$property: (fill, opacity, transform),
+		$duration: 250ms,
+		$delay: 0,
+		$ease: $easeNatural,
+		$optimize: false
+	);
+	cursor: pointer;
+	display: block;
+	width: 100%;
+	height: auto;
+	font: $headline;
+	fill: $white;
+	stroke: none;
+
+	/*
+	&:hover {
+		@include animate(
+			$name: animate-logo,
+			$direction: normal,
+			$play: true,
+			$duration: 5000ms,
+			$delay: 0,
+			$repeat: infinite,
+			$ease: ease-in-out,
+			$reset: false
+		);
+		fill: $accent;
+	}
+	*/
+
+	&-icon {
+
+	}
+
+	&-text {
+		@extend .fix-font-render;
+		//overflow: hidden;
+		height: auto !important;
+	}
+
+	&-desktop {
+
+	}
+
+	&-mobile {
+		opacity: 0;
+	}
+
+}
+
+
+// ANIMATIONS
+@keyframes animate-logo {
+
+	0% {
+		fill: $white;
+	}
+
+	25% {
+		fill: $primary;
+	}
+
+	50% {
+		fill: $secondary;
+	}
+
+	100% {
+		fill: $accent;
+	}
+
+}

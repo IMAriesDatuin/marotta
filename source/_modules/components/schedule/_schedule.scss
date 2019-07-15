@@ -1,0 +1,72 @@
+/* -------------------------------------------------- */
+/* SCHEDULE
+/* -------------------------------------------------- */
+
+// OPTIONS
+$schedule-options: (
+	background-color: transparent,
+	duration: 600ms,
+	delay: 400ms,
+	ease: cubic-bezier(0.51,0.92,0.24,1.15)
+);
+
+
+// MAIN
+.schedule {
+
+	padding-left: 2rem;
+	border-left: 1px solid $primary;
+
+	h2 {
+		margin-bottom: 3rem;
+		color: $gray;
+		font-family: $copy;
+		font-size: 1.25em;
+	}
+
+	ul {
+
+		font-family: $subheadline;
+		font-size: 0.75em;
+
+		li {
+
+			margin: {
+				top: 0.5rem;
+				bottom: 0.5rem;
+			}
+
+			a:first-child {
+				color: $gray;
+				text-align: left;
+
+			}
+
+			a:last-child {
+				color: $light-gray;
+				text-align: center;
+
+				@include break($min: 0, $max: $mobile, $orientation: '') {
+					text-align: right;
+				}
+
+			}
+
+		}
+
+	}
+
+	@include break($min: 0, $max: $mobile, $orientation: '') {
+		padding-left: 0;
+		border-left: 0 solid $primary;
+	}
+
+}
+
+
+// MODIFIERS
+.schedule {
+
+	$self: &;
+
+}

@@ -1,0 +1,70 @@
+/* -------------------------------------------------- */
+/* TEXT BLOCK
+/* -------------------------------------------------- */
+
+// OPTIONS
+$text-block-options: (
+	duration: 250ms,
+	delay: 0,
+	ease: $easeNatural
+);
+
+
+// MAIN
+.text-block {
+
+	position: relative;
+	padding: {
+		top: $gutter;
+		right: $gutter;
+		bottom: $gutter;
+		left: $gutter;
+	}
+	//width: 50%;
+	background: $white;
+	//mix-blend-mode: lighten;
+
+	> h1 {
+		//margin-bottom: 1rem;
+		padding: 0;
+		text-transform: uppercase;
+		word-wrap: normal;
+		transform-origin: right center;
+	}
+
+	> p {
+
+		padding: 0;
+		white-space: normal;
+
+		&:not(:first-child):not(:last-child) {
+			margin-bottom: 4rem;
+		}
+
+		&:last-of-type {
+			//padding-bottom: 4rem;
+			//border-bottom: thin dotted $gray;
+		}
+
+	}
+
+	> .button {
+
+		margin: {
+			top: 6rem;
+			bottom: 0;
+		};
+		width: 300px;
+
+		@include break($min: 0, $max: $mobile, $orientation: 'both') {
+			width: 100%;
+			max-width: 100%;
+		}
+
+	}
+
+	@include break($min: 0, $max: $tablet, $orientation: '') {
+		width: 100%;
+	}
+
+}

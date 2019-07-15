@@ -1,0 +1,56 @@
+/* -------------------------------------------------- */
+/* HEADLINE
+/* -------------------------------------------------- */
+
+// MAIN
+.headline {
+
+	padding: {
+		top: 0;
+		right: $gutter;
+		bottom: 0;
+		left: $gutter;
+	}
+	color: $charcoal;
+	font: $headline;
+	font-size: 6em;
+	//font-size: 5vw;
+	line-height: 0.75em;
+	margin-bottom: 6rem;
+	text-transform: uppercase;
+
+	&-title {
+		overflow: hidden;
+		//margin-bottom: 0.25rem;
+	}
+
+	&-subtitle {
+		display: block;
+		position: relative;
+		padding-bottom: 1rem;
+		color: $white;
+		font-size: 0.5em;
+		line-height: 1em;
+		text-shadow: -1px -1px 0 $gray,
+					 1px -1px 0 $gray,
+					 -1px 1px 0 $gray,
+					 1px 1px 0 $gray;
+	}
+
+	&-text-lighten {
+		color: lighten($charcoal, 100%);
+	}
+
+	@include break($min: $mobile, $max: $laptop, $orientation: 'both') {
+		font-size: 4em;
+	}
+
+	@include break($min: 0, $max: $mobile, $orientation: 'portrait') {
+		font-size: 2.5em;
+	}
+
+	@include break($min: 0, $max: $mobile, $orientation: 'landscape') {
+		font-size: 3em;
+	}
+
+}

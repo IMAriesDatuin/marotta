@@ -1,0 +1,35 @@
+/* -------------------------------------------------- */
+/* LIST SEPARATOR
+/* -------------------------------------------------- */
+
+// OPTIONS
+$list-separator-options: (
+	duration: 200ms,
+	delay: 0,
+	ease: $easeWipe
+);
+
+
+// MAIN
+.list-separator {
+
+	li {
+
+		&:not(:last-child)::after {
+			@include transition(
+				$property: (opacity),
+				$duration: map-get($component-options, duration),
+				$delay: map-get($component-options, delay),
+				$ease: map-get($component-options, ease),
+				$optimize: false
+			);
+			opacity: 1;
+		}
+
+		&.no-separator:not(:last-child)::after { 
+			opacity: 0;
+		}
+
+	}
+
+}

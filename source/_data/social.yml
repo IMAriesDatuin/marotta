@@ -1,0 +1,29 @@
+
+# CONTENT
+content:
+ -
+  icon: 'facebook'
+  title: 'Facebook'
+  description: 'Add us on Facebook.'
+  link: 'https://www.facebook.com/marottaplasticsurgeryspecialists'
+
+
+ -
+  icon: 'instagram'
+  title: 'Instagram'
+  description: 'Follow us on Instagram.'
+  link: 'https://www.instagram.com/marottaplasticsurgery'
+
+
+ -
+  icon: 'twitter'
+  title: 'Twitter'
+  description: 'Follow us on Twitter.'
+  link: 'https://twitter.com/marottaPSS'
+
+
+ -
+  icon: 'youtube'
+  title: 'Youtube'
+  description: 'Watch us on Youtube.'
+  link: 'https://www.youtube.com/user/drmmarottamdcom'

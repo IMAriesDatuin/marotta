@@ -1,0 +1,31 @@
+/* -------------------------------------------------- */
+/* FLORA
+/* -------------------------------------------------- */
+
+// OPTIONS
+$floral-options: (
+	duration: 600ms, // Set the duration of the animation.
+	delay: 0, // Delay the animation by this amount. 
+	ease: $easeNatural // Set the easing type for this animation.
+);
+
+
+// MAIN
+.flora {
+
+	z-index: auto;
+	pointer-events: none;
+	position: absolute;
+	width: 100%;
+	max-width: 800px;
+	height: 100%;
+
+	@include break($min: 0, $max: $laptop, $orientation: 'landscape') {
+		max-width: 700px;
+	}
+
+	@include break($min: 0, $max: $mobile, $orientation: 'both') {
+		display: none;
+	}
+
+}

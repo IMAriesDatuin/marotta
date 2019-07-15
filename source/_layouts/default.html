@@ -1,0 +1,207 @@
+<!doctype html>
+
+<html lang="--language" prefix="og: http://ogp.me/ns#" class="is-locked">
+<head>
+<title>--name | {{{ title }}}</title>
+<meta charset="utf-8">
+
+
+<!--removeIf(removeSiteValidation)-->
+<meta name="google-site-verification" content="--googleSiteVerification">
+<meta name="msvalidate.01" content="--msSiteVerification">
+<!--endRemoveIf(removeSiteValidation)-->
+
+
+<!--<meta http-equiv="x-ua-compatible" content="ie=edge">-->
+<meta name="viewport" content="width=device-width, initial-scale=--initialScale, minimum-scale=--minimumScale, shrink-to-fit=--shrinkToFit, user-scalable=--userScalable, viewport-fit=--viewportFit">
+
+
+<!-- CANONICAL -->
+{{#ifpage 'index'}}
+	<link rel="canonical" href="/">
+{{/ifpage}}
+
+{{#unlesspage 'index'}}
+	<link rel="canonical" href="--url{{ page }}">
+{{/unlesspage}}
+<!-- // CANONICAL -->
+
+
+<!-- CORE -->
+<meta name="description" content="--description">
+
+
+<!--removeIf(removeBase)-->
+<!-- build:base -->
+<!-- endbuild -->
+<!--endRemoveIf(removeBase)-->
+
+
+<!-- GENERAL -->
+<!--<meta http-equiv="cleartype" content="on">-->
+<meta name="robots" content="index,follow">
+<meta name="googlebot" content="index,follow">
+<meta name="HandheldFriendly" content="--handheldFriendly">
+<meta name="format-detection" content="telephone=no">
+<meta name="skype_toolbar" content="skype_toolbar_parser_compatible">
+
+
+<!-- ICONS -->
+<link rel="shortcut icon" href="{{ root }}--faviconDefault">
+<link rel="icon" type="image/png" href="{{ root }}--faviconSmall" sizes="16x16">
+<link rel="icon" type="image/png" href="{{ root }}--faviconLarge" sizes="32x32">
+<link rel="image_src" type="image/png" href="{{ root }}--imageCover">
+
+<link rel="apple-touch-icon" href="{{ root }}--iconiOS" sizes="180x180">
+<link rel="mask-icon" href="{{ root }}--safariPinnedTab" color="--themeColor">
+<meta name="apple-mobile-web-app-title" content="--shortName">
+<meta name="apple-mobile-web-app-capable" content="--webAppCapable">
+
+<meta name="application-name" content="--name">
+<meta name="msapplication-TileColor" content="--backgroundColor">
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="theme-color" content="--themeColor">
+
+
+<!-- MANIFEST -->
+<link rel="manifest" href="{{ root }}site.webmanifest">
+
+
+<!-- FACEBOOK OPEN GRAPH -->
+<meta property="og:title" content="--name | {{{ title }}}">
+<meta property="og:description" content="--description">
+<meta property="og:locale" content="--fbLocale">
+<meta property="og:type" content="--fbType">
+<meta property="og:image" content="{{ root }}--imageCover">
+<meta property="og:image:width" content="--fbWidth">
+<meta property="og:image:height" content="--fbHeight">
+<meta property="og:url" content="--url{{ page }}">
+
+
+<!-- TWITTER CARD -->
+<meta name="twitter:title" content="--name">
+<meta name="twitter:description" content="--description">
+<meta name="twitter:site" content="--twitterHandle">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="{{ root }}--imageProfile">
+<meta name="twitter:image:alt" content="--url">
+
+
+<!-- APP BANNER -->
+<!--removeIf(removeAppBanner)-->
+<meta name="apple-itunes-app" content="--iTunesAppID">
+<meta name="google-play-app" content="--playAppID">
+<!--endRemoveIf(removeAppBanner)-->
+
+
+
+
+
+<!-- build:inlinecss -->
+<!-- endbuild -->
+
+
+<!-- inject:scripts:css -->
+<!-- endinject -->
+
+
+<!-- build:inlinejs -->
+<!-- endbuild -->
+
+
+
+
+
+<!-- PRELOAD ASSETS -->
+<link rel="preload" href="{{ root }}webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ root }}webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ root }}webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ root }}webfonts/fa-light-300.woff2" as="font" type="font/woff2" crossorigin>
+<!-- // PRELOAD ASSETS -->
+
+
+
+
+
+</head>
+
+
+	<body>
+
+
+	{{> svg-filters}}
+
+
+
+
+	
+	{{> page-transition}}
+
+
+
+
+
+	<!-- JAVASCRIPT DISABLED MESSAGE -->
+	<noscript>
+
+		<!-- inject:scripts:css -->
+		<!-- endinject -->
+
+		<div>
+			<img src="assets/error.gif" alt="Ooops, your JavaScript is disabled."/>
+			<h1>JavaScript is disabled on your browser</h1>
+			<p>It is required for this site to deliver a pleasant viewing experience. Please enable JavaScript to continue using this website.</p>
+		</div>
+
+	</noscript>
+	<!-- // JAVASCRIPT DISABLE MESSAGE -->
+
+
+
+
+
+	<!-- ERROR -->
+	<div id="error">
+		<p>Please resize your window or rotate your phone to portrait mode.</p>
+	</div>
+	<!-- // ERROR -->
+
+
+
+
+
+	{{> navbar}}
+	{{> nav-panel}}
+	{{> legal}}
+	{{> scroll-progress}}
+
+
+
+
+	<!-- MAIN -->
+	<main id="swup" data-page="{{ page }}">
+
+		{{> body}}
+		{{> footer}}
+
+	</main>
+	<!-- // MAIN -->
+
+
+
+
+
+	<!--removeIf(removeLibs)-->
+	<!-- inject:libs:js -->
+	<!-- endinject -->
+	<!--endRemoveIf(removeLibs)-->
+
+
+	<!-- inject:scripts:js -->
+	<!-- endinject -->
+
+
+	</body>
+
+
+</html>

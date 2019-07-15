@@ -1,0 +1,738 @@
+/* -------------------------------------------------- */
+/* REFERENCE GUIDE
+/* -------------------------------------------------- */
+
+// BREAKPOINTS
+//@include breakpoint($prefix: '-', $suffix: '');
+//@include break($type: 'width', $min: 0, $max: 320px, $orientation: '');
+
+
+// ASPECT RATIO
+//@include aspect-ratio(16, 9);
+
+
+//COLORS
+//@include color($type: 'hex', $property: 'color', $prefix: '-', $suffix: '--', $alpha: 1);
+//@include color($type: 'gradient', $property: 'background-color', $prefix: '-', $suffix: '', $alpha: 1);
+//@include color($type: 'rgba', $property: 'border-color', $prefix: '-', $suffix: '--', $alpha: 1);
+//@include color($type: 'svg-gradient', $property: 'color', $prefix: '-', $suffix: '-gradient path', $alpha: 1);
+
+
+// TYPOGRAPHY
+//@include fluid-type($min-font-size: 16px, $max-font-size: 48px, $min-range: 320px, $max-range: 1920px);
+
+//@include icon($type: 'brand', $icon: 'f16d');
+//@include icon($type: 'light', $icon: 'f67c');
+//@include icon($type: 'regular', $icon: 'f67c');
+//@include icon($type: 'solid', $icon: 'f67c');
+
+
+// FADE
+//@include fade($type: 'left', $color: #fff, $alpha: 1, $scale: 100%, $start: 0, $stop: 100%, $order: 0, $prefix: '-', $suffix: '', $is-fixed: false, $clickable: false);
+
+
+// SHADOWS
+//@include shadow($type: 'drop-shadow', $color: #000, $x: 0, $y: $amount, $blur: $amount, $alpha: 0.2, $inset: false);
+//@include shadow($type: 'box-shadow', $color: #000, $x: 0, $y: $amount, $blur: $amount, $spread: 0, $alpha: 0.2, $strength: 0.5, $inset: false);
+//@include shadow($type: 'text-shadow', $color: #000, $x: $amount, $y: $amount, $blur: 1px, $alpha: 0.25, $strength: 1);
+
+
+// ANIMATIONS
+//@include animate($name: 'my-animation', $duration: 400ms, $direction: 'normal', $play: true, $delay: 0, $repeat: 1,  $ease: 'ease-out', $reset: false);
+
+
+// TRANSITION
+//@include transition($property: (color), $duration: 400ms, $delay: 0, $ease: 'ease-out', $optimize: true);
+
+
+/* -------------------------------------------------- */
+/* BREAKPOINTS
+/* -------------------------------------------------- */
+
+// MIXIN
+@mixin breakpoint($prefix: '-', $suffix: '') {
+
+	// ORIGINAL
+	&#{$suffix} {
+		@content;
+	}
+
+
+	// EX: IPHONE 5, IPHONE 6
+	@media screen and (min-width: 0) and (max-width: map-get($breakpoints, mobile)) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 1)}#{$suffix} {
+			@content;
+		}
+
+	}
+
+	@media screen and (min-width: 0) and (max-width: map-get($breakpoints, mobile)) and (orientation: portrait) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 1)}#{'-portrait'} {
+			@content;
+		}
+
+	}
+
+	@media screen and (min-height: 0) and (max-height: map-get($breakpoints, mobile)) and (orientation: landscape) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 1)}#{'-landscape'} {
+			@content;
+		}
+
+	}
+
+	@media screen and (min-width: 0) and (max-width: map-get($breakpoints, mobile)) and (orientation: portrait) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 1)}#{'-both'} {
+			@content;
+		}
+
+	}
+	@media screen and (min-height: 0) and (max-height: map-get($breakpoints, mobile)) and (orientation: landscape) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 1)}#{'-both'} {
+			@content;
+		}
+
+	}
+
+
+	// EX: IPAD, IPAD MINI
+	@media screen and (min-width: map-get($breakpoints, mobile) + 1) and (max-width: map-get($breakpoints, tablet)) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 2)}#{$suffix} {
+			@content;
+		}
+
+	}
+
+	@media screen and (min-width: map-get($breakpoints, mobile) + 1) and (max-width: map-get($breakpoints, tablet)) and (orientation: portrait) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 2)}#{'-portrait'} {
+			@content;
+		}
+
+	}
+
+	@media screen and (min-height: map-get($breakpoints, mobile) + 1) and (max-height: map-get($breakpoints, tablet)) and (orientation: landscape) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 2)}#{'-landscape'} {
+			@content;
+		}
+
+	}
+
+	@media screen and (min-width: map-get($breakpoints, mobile) + 1) and (max-width: map-get($breakpoints, tablet)) and (orientation: portrait) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 2)}#{'-both'} {
+			@content;
+		}
+
+	}
+	@media screen and (min-height: map-get($breakpoints, mobile) + 1) and (max-height: map-get($breakpoints, tablet)) and (orientation: landscape) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 2)}#{'-both'} {
+			@content;
+		}
+
+	}
+
+
+	// EX: IPAD PRO, LAPTOP
+	@media screen and (min-width: map-get($breakpoints, tablet) + 1) and (max-width: map-get($breakpoints, laptop)) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 3)}#{$suffix} {
+			@content;
+		}
+
+	}
+
+	@media screen and (min-width: map-get($breakpoints, tablet) + 1) and (max-width: map-get($breakpoints, laptop)) and (orientation: portrait) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 3)}#{'-portrait'} {
+			@content;
+		}
+
+	}
+
+	@media screen and (min-height: map-get($breakpoints, tablet) + 1) and (max-height: map-get($breakpoints, laptop)) and (orientation: landscape) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 3)}#{'-landscape'} {
+			@content;
+		}
+
+	}
+
+	@media screen and (min-width: map-get($breakpoints, tablet) + 1) and (max-width: map-get($breakpoints, laptop)) and (orientation: portrait) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 3)}#{'-both'} {
+			@content;
+		}
+
+	}
+	@media screen and (min-height: map-get($breakpoints, tablet) + 1) and (max-height: map-get($breakpoints, laptop)) and (orientation: landscape) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 3)}#{'-both'} {
+			@content;
+		}
+
+	}
+
+
+	// EX: DESKTOP
+	@media screen and (max-width: map-get($breakpoints, desktop)) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 4)}#{$suffix} {
+			@content;
+		}
+
+	}
+
+
+	// EX: MOBILE TO TABLET
+	@media screen and (min-width: 0) and (max-width: map-get($breakpoints, tablet)) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 1)}#{'-to-'}#{nth($breakpoint-keys, 2)}#{$suffix} {
+			@content;
+		}
+
+	}
+
+	@media screen and (min-width: 0) and (max-width: map-get($breakpoints, tablet)) and (orientation: portrait) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 1)}#{'-to-'}#{nth($breakpoint-keys, 2)}#{'-portrait'} {
+			@content;
+		}
+
+	}
+
+	@media screen and (min-height: 0) and (max-height: map-get($breakpoints, tablet)) and (orientation: landscape) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 1)}#{'-to-'}#{nth($breakpoint-keys, 2)}#{'-landscape'} {
+			@content;
+		}
+
+	}
+
+	@media screen and (min-width: 0) and (max-width: map-get($breakpoints, tablet)) and (orientation: portrait) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 1)}#{'-to-'}#{nth($breakpoint-keys, 2)}#{'-both'} {
+			@content;
+		}
+
+	}
+	@media screen and (min-height: 0) and (max-height: map-get($breakpoints, tablet)) and (orientation: landscape) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 1)}#{'-to-'}#{nth($breakpoint-keys, 2)}#{'-both'} {
+			@content;
+		}
+
+	}
+
+
+	// EX: MOBILE TO LAPTOP
+	@media screen and (min-width: 0) and (max-width: map-get($breakpoints, laptop)) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 1)}#{'-to-'}#{nth($breakpoint-keys, 3)}#{$suffix} {
+			@content;
+		}
+
+	}
+
+	@media screen and (min-width: 0) and (max-width: map-get($breakpoints, laptop)) and (orientation: portrait) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 1)}#{'-to-'}#{nth($breakpoint-keys, 3)}#{'-portrait'} {
+			@content;
+		}
+
+	}
+
+	@media screen and (min-height: 0) and (max-height: map-get($breakpoints, laptop)) and (orientation: landscape) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 1)}#{'-to-'}#{nth($breakpoint-keys, 3)}#{'-landscape'} {
+			@content;
+		}
+
+	}
+
+	@media screen and (min-width: 0) and (max-width: map-get($breakpoints, laptop)) and (orientation: portrait) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 1)}#{'-to-'}#{nth($breakpoint-keys, 3)}#{'-both'} {
+			@content;
+		}
+
+	}
+	@media screen and (min-height: 0) and (max-height: map-get($breakpoints, laptop)) and (orientation: landscape) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 1)}#{'-to-'}#{nth($breakpoint-keys, 3)}#{'-both'} {
+			@content;
+		}
+
+	}
+
+
+	// EX: TABLET TO LAPTOP
+	@media screen and (min-width: map-get($breakpoints, tablet) + 1) and (max-width: map-get($breakpoints, laptop)) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 2)}#{'-to-'}#{nth($breakpoint-keys, 3)}#{$suffix} {
+			@content;
+		}
+
+	}
+
+	@media screen and (min-width: map-get($breakpoints, tablet ) + 1) and (max-width: map-get($breakpoints, laptop)) and (orientation: portrait) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 2)}#{'-to-'}#{nth($breakpoint-keys, 3)}#{'-portrait'} {
+			@content;
+		}
+
+	}
+
+	@media screen and (min-height: map-get($breakpoints, tablet) + 1) and (max-height: map-get($breakpoints, laptop)) and (orientation: landscape) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 2)}#{'-to-'}#{nth($breakpoint-keys, 3)}#{'-landscape'} {
+			@content;
+		}
+
+	}
+
+	@media screen and (min-width: map-get($breakpoints, tablet) + 1) and (max-width: map-get($breakpoints, laptop)) and (orientation: portrait) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 2)}#{'-to-'}#{nth($breakpoint-keys, 3)}#{'-both'} {
+			@content;
+		}
+
+	}
+	@media screen and (min-height: map-get($breakpoints, tablet) + 1) and (max-height: map-get($breakpoints, laptop)) and (orientation: landscape) {
+
+		&#{$prefix}#{nth($breakpoint-keys, 2)}#{'-to-'}#{nth($breakpoint-keys, 3)}#{'-both'} {
+			@content;
+		}
+
+	}
+
+}
+
+
+// SINGLE USE CASE
+@mixin break($min: 0, $max: 320px, $orientation: '') {
+
+	// SINGLE USE ORIENTATION
+	@if $orientation == '' {
+
+		@media screen and (min-width: strip-unit($min) + 1 + px) and (max-width: $max) {
+			@content;
+		}
+
+	}
+
+	@if $orientation == 'portrait' {
+
+		@media screen and (min-width: strip-unit($min) + 1 + px) and (max-width: $max) and (orientation: portrait) {
+			@content;
+		}
+
+	}
+
+	@if $orientation == 'landscape' {
+
+		@media screen and (min-height: strip-unit($min) + 1 + px) and (max-height: $max) and (orientation: landscape) {
+			@content;
+		}
+
+	}
+
+
+ 	// BOTH ORIENTATION
+	@if $orientation == 'both' {
+
+		@media screen and (min-width: strip-unit($min) + 1 + px) and (max-width: $max) and (orientation: portrait) {
+			@content;
+		}
+
+		@media screen and (min-height: strip-unit($min) + 1 + px) and (max-height: $max) and (orientation: landscape) {
+			@content;
+		}
+
+	}
+
+}
+
+
+/* -------------------------------------------------- */
+/* ASPECT RATIO
+/* -------------------------------------------------- */
+
+@mixin aspect-ratio($width, $height) {
+
+	position: relative;
+
+	&:before {
+		content: '';
+		display: block;
+		padding-top: ($height / $width) * 100%;
+		width: 100%;
+	}
+
+	> .content {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
+
+}
+
+
+/* -------------------------------------------------- */
+/* COLORS
+/* -------------------------------------------------- */
+
+@mixin color($type: 'hex', $property: 'color', $prefix: '', $suffix: '', $alpha: 1) {
+
+	@each $name, $color in $colors {
+
+		@if $type == 'hex' or $type == '' {
+
+			&#{$prefix}#{$name}#{$suffix} {
+				#{$property}: $color;
+			}
+
+		} @else if $type == 'gradient' {
+
+			$start: 25%;
+			$stop: 100%;
+
+			&#{$prefix}#{$name}-top#{$suffix} {
+				#{$property}: linear-gradient(to top, $color $start, darken($color, $darken) $stop);
+			}
+
+			&#{$prefix}#{$name}-right#{$suffix} {
+				#{$property}: linear-gradient(to right, $color $start, darken($color, $darken) $stop);
+			}
+
+			&#{$prefix}#{$name}-bottom#{$suffix} {
+				#{$property}: linear-gradient(to bottom, $color $start, darken($color, $darken) $stop);
+			}
+
+			&#{$prefix}#{$name}-left#{$suffix} {
+				#{$property}: linear-gradient(to left, $color $start, darken($color, $darken) $stop);
+			}
+
+			&#{$prefix}#{$name}-radial#{$suffix} {
+				#{$property}: radial-gradient(circle at center, $color 0%, darken($color, $darken) 100%);
+			}
+
+			&#{$prefix}#{$name}-radial-reverse#{$suffix} {
+				#{$property}: radial-gradient(circle at center, darken($color, $darken) 0%, $color 100%);
+			}
+
+			&#{$prefix}#{$name}-slant#{$suffix} {
+				#{$property}: linear-gradient(45deg, $color $start, darken($color, $darken) $stop);
+			}
+
+			&#{$prefix}#{$name}-slant-reverse#{$suffix} {
+				#{$property}: linear-gradient(-45deg, $color $start, darken($color, $darken) $stop);
+			}
+
+		} @else if $type == 'rgba' or $type == 'rgb' {
+
+			&#{$prefix}#{$name}#{$suffix} {
+				#{$property}: rgba($color, $alpha);
+			}
+
+			@if $alpha == 1 {
+				@warn '"1" is defined for "$alpha" value. Framework will default to "hex" value instead.';
+			}
+
+		} @else if $type == 'svg-gradient' or $type == 'svg' {
+
+			&#{$prefix}#{$name}#{$suffix} {
+				fill: url( .svg-#{$name}-stop-color );
+			}
+
+			&#{$prefix}#{$name}-stop-color stop.start-color {
+				stop-color: $color;
+			}
+
+			&#{$prefix}#{$name}-stop-color stop.end-color {
+				stop-color: darken($color, $darken);
+			}
+
+		} @else if $type == '' {
+
+			@warn 'No "$type" value defined. Framework will default to "hex" value instead.';
+
+		}
+
+	}
+
+}
+
+
+/* -------------------------------------------------- */
+/* TYPOGRAPHY
+/* -------------------------------------------------- */
+
+// FLUID TYPE
+@mixin fluid-type($min-font-size: map-get($font-sizes, 6), $max-font-size: map-get($font-size, 1), $min-range: map-get($breakpoints, mobile), $max-range: map-get($breakpoints, desktop)) {
+
+	font-size: calc(#{$min-font-size} + #{(($max-font-size / ($max-font-size * 0 + 1)) - ($min-font-size / ($min-font-size * 0 + 1)))} * ( (100vw - #{$min-range}) / #{(($max-range / ($max-range * 0 + 1)) - ($min-range / ($min-range * 0 + 1)))}));
+
+	@media screen and (max-width: $min-range) {
+		font-size: $min-font-size;
+	}
+
+	@media screen and (min-width: $max-range) {
+		font-size: $max-font-size;
+	}
+  
+}
+
+
+// ICON
+@mixin icon($type: 'regular', $icon: 'f209') {
+
+	// FONT FAMILY
+	@if $type == 'brand' {
+
+		font-family: $font-icon-brand;
+		font-weight: normal;
+
+	} @else if $type == 'light' {
+
+		font-family: $font-icon;
+		font-weight: 300;
+
+	} @else if $type == 'regular' {
+
+		font-family: $font-icon;
+		font-weight: 400;
+
+	} @else if $type == 'solid' {
+
+		font-family: $font-icon;
+		font-weight: 900;
+
+	}
+
+
+	// MAIN
+	content: #{"\'\\"}#{$icon + "\'"}; // Corrects variable interpolation with proper format character encoding.
+	position: absolute;
+	font-style: normal;
+	font-variant: normal;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+
+}
+
+
+/* -------------------------------------------------- */
+/* FADE
+/* -------------------------------------------------- */
+
+@mixin fade($type: 'left', $color: #fff, $alpha: 1, $scale: 100%, $start: 0, $stop: 100%, $order: 0, $prefix: '-', $suffix: '', $is-fixed: false, $clickable: false) {
+
+	&#{$prefix}#{$suffix} {
+
+		$position: $type;
+		content: '';
+		z-index: $order;
+
+
+		// MAIN
+		@if $type == 'top' or $type == 'bottom' {
+
+			#{$position}: 0;
+			left: 0;
+			width: 100%;
+			height: $scale;
+			background: linear-gradient(to unquote($type), rgba($color, 0) $start, rgba($color, $alpha) $stop);
+
+		} @else if $type == 'left' or $type == 'right' {
+
+			#{$position}: 0;
+			top: 0;
+			width: $scale;
+			height: 100%;
+			background: linear-gradient(to unquote($type), rgba($color, 0) $start, rgba($color, $alpha) $stop);
+
+		} @else if $type == 'full' or $type == 'radial' {
+
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: radial-gradient(ellipse at center, rgba($color, 0) $start, rgba($color, $alpha) $stop);
+
+		} @else if $type == 'tb' or $type == 'top-to-bottom' {
+
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: $scale;
+			background: linear-gradient(to bottom, rgba($color, $alpha) $start, rgba($color, 0) 50%, rgba($color, $alpha) $stop);
+
+		} @else if $type == 'lr' or $type == 'left-to-right' {
+
+			top: 0;
+			left: 0;
+			width: $scale;
+			height: 100%;
+			background: linear-gradient(to right, rgba($color, $alpha) $start, rgba($color, 0) 50%, rgba($color, $alpha) $stop);
+		}
+
+
+		// POSITION
+		@if $is-fixed == true {
+
+			position: fixed;
+
+		} @else {
+
+			position: absolute;
+
+		}
+
+
+		// CLICKABLE
+		@if $clickable == false {
+			pointer-events: none;
+		}
+
+	}
+
+}
+
+
+/* -------------------------------------------------- */
+/* SHADOWS
+/* -------------------------------------------------- */
+
+@mixin shadow($type: 'box-shadow', $color: #000, $x: 2px, $y: 2px, $blur: 2px, $spread: 0,  $alpha: 0.5, $strength: 1, $inset: false) {
+
+	// BOX
+	@if $type == 'box' and $inset == false or $type == 'box-shadow' and $inset == false {
+
+		box-shadow: $x $y $blur $spread rgba($color, $alpha),
+					($x * 2) ($y * 2) ($blur * 4) $spread lighten( rgba($color, $alpha * strip-unit(0.4)), 25% );
+
+ 	}
+
+	@if $type == 'box' and $inset == true or $type == 'box-shadow' and $inset == true {
+
+		box-shadow: inset $x $y $blur rgba($color, $alpha);
+
+ 	}
+
+
+	// DROP
+	@if $type == 'drop' or $type == 'drop-shadow' {
+
+		filter: drop-shadow($x $y $blur rgba($color, $alpha));
+
+ 	}
+
+ 	@if $type == 'drop' and $inset == true or $type == 'drop-shadow' and $inset == true {
+
+		@warn '"inset" can only be used with "box-shadow".';
+
+	}
+
+
+	// TEXT
+	@if $type == 'text' or $type == 'text-shadow' {
+
+		text-shadow: round($x / 2) round($y / 2) round($blur * strip-unit($strength)) rgba($color, $alpha);
+
+	}
+
+	@if $type == 'text' and $inset == true or $type == 'text-shadow' and $inset == true {
+
+		@warn '"inset" can only be used with "box-shadow".';
+
+	}
+
+}
+
+
+/* -------------------------------------------------- */
+/* ANIMATIONS
+/* -------------------------------------------------- */
+
+@mixin animate($name: 'my-animation', $duration: 400ms, $direction: 'normal', $play: true, $delay: 0, $repeat: 1,  $ease: 'cubic-bezier(0.4,0,0.2,1)', $reset: false) {
+
+	@if $play == true {
+
+		animation-play-state: running;
+
+	} @else {
+
+		animation-play-state: paused;
+
+	}
+
+	@if $reset == true {
+
+		animation-fill-mode: both;
+
+	} @else {
+
+		animation-fill-mode: none;
+
+	}
+
+	animation-name: $name;
+	animation-direction: $direction;
+	animation-duration: $duration * $timescale;
+	animation-delay: $delay;
+	animation-iteration-count: $repeat;
+	animation-timing-function: $ease;
+
+}
+
+
+/* -------------------------------------------------- */
+/* TRANSITIONS
+/* -------------------------------------------------- */
+
+// *Note: A warning about will-change property (read for detailed information: https://developer.mozilla.org/en-US/docs/Web/CSS/will-change) due to performance issues.
+// *Note: will-change has no effect on :hover states.
+@mixin transition($property: null, $duration: 400ms,  $delay: 0, $ease: '', $optimize: false) {
+
+	transition: {
+
+		// PROPERTY
+		@if $property == '' {
+
+
+		} @else {
+
+			property: $property;
+
+		}
+
+		@if $property == '' {
+
+
+		} @else {
+
+			timing-function: $ease;
+
+		}
+
+		duration: $duration * $timescale;
+		delay: $delay;
+
+	}
+
+	@if $optimize {
+		backface-visibility: hidden;
+		will-change: $property;
+	}
+
+}

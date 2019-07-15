@@ -1,0 +1,178 @@
+/* -------------------------------------------------- */
+/* INTERSECTION OBSERVER
+/* -------------------------------------------------- */
+
+// OPTIONS
+$io-options: (
+	background-color: $white,
+	duration: 400ms,
+	delay: 0,
+	ease: $easeWipe
+);
+
+
+// COPY
+.io {
+
+	$self: &;
+
+	&-headline {
+
+		@extend .fix-font-render;
+		position: relative;
+		//font-kerning: none;
+		word-wrap: break-word;
+
+		.split-text {
+
+			/*
+			@include transition(
+				$property: (filter),
+				$duration: map-get($io-options, duration),
+				$delay: map-get($io-options, delay),
+				$ease: map-get($io-options, ease),
+				$optimize: false
+			);
+			*/
+			overflow: hidden;
+			//filter: blur(6px);
+
+			&#{$self}-headline-reveal {
+				//filter: blur(0);			
+			}
+
+		}
+
+		.headline-subtitle {
+
+			position: relative;
+
+			/*
+			@include transition(
+					$property: (transform),
+					$duration: map-get($io-options, duration),
+					$delay: map-get($io-options, delay),
+					$ease: map-get($io-options, ease),
+					$optimize: false
+			);
+			*/
+
+			&::before {
+				@include transition(
+					$property: (transform),
+					$duration: map-get($io-options, duration),
+					$delay: map-get($io-options, delay),
+					$ease: map-get($io-options, ease),
+					$optimize: false
+				);
+				content: '';
+				z-index: 1;
+				display: none;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: $black;
+				transform: scale3d(1,1,1);
+				transform-origin: left center;
+			}
+
+			&#{$self}-headline-reveal {
+
+				&::before {
+					transform: scale3d(0,1,1);
+					transform-origin: right center;
+				}
+
+			}
+
+		}
+
+	}
+
+	&-copy {
+
+		@extend .fix-font-render;
+		position: relative;
+		//font-kerning: none;
+		word-wrap: break-word;
+
+		.split-text {
+
+			/*
+			@include transition(
+				$property: (filter),
+				$duration: map-get($io-options, duration),
+				$delay: map-get($io-options, delay),
+				$ease: map-get($io-options, ease),
+				$optimize: true
+			);
+			filter: blur(4px);
+			*/
+
+			&#{$self}-copy-reveal {
+				//filter: blur(0);			
+			}
+
+		}
+
+	}
+
+	&-list {
+
+		li {
+
+			@include transition(
+					$property: (color, border, background, box-shadow, transform),
+					$duration: map-get($io-options, duration),
+					$delay: map-get($io-options, delay),
+					$ease: map-get($io-options, ease),
+					$optimize: false
+			);
+			//color: $black;
+			//filter: blur(4px);
+
+			&#{$self}-list-reveal {
+				//color: $white;
+				//filter: blur(0);
+			}
+
+		}
+
+	}
+
+	&-button {
+
+		&::before {
+			@include transition(
+				$property: (transform),
+				$duration: map-get($io-options, duration) * 2,
+				$delay: map-get($io-options, delay),
+				$ease: map-get($io-options, ease),
+				$optimize: false
+			);
+			content: '';
+			z-index: 2;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: map-get($io-options, background-color);
+			transform: scale3d(1,1,1);
+			transform-origin: top center;
+		}
+
+		&-reveal {
+
+			&::before {
+				transform: scale3d(1,0,1);
+				transform-origin: bottom center;
+			}
+
+		}
+
+	}
+
+}

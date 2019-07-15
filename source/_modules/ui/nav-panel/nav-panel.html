@@ -1,0 +1,63 @@
+
+<!-- CONTENT: NAV PANEL -->
+<div id="nav-panel" class="nav-panel is-unlocked">
+
+
+	<!-- FADE -->
+	<div class="nav-panel-fade"></div>
+	<!-- // FADE -->
+
+
+	<!-- NAV -->
+	<nav>
+
+		<!-- MENU -->
+		<ul class="nav-panel-menu">
+
+			{{#each menu.content}}
+			<li>
+
+				<a href="--url/{{ link }}" class="{{ id }}" data-letters="{{ title }}">
+					{{ title }}
+				</a>
+
+			</li>
+			{{/each}}
+
+		</ul>
+		<!-- // MENU -->
+
+
+		<!-- SOCIAL -->
+		<ul class="nav-panel-social social-text list-separator">
+
+			{{#each social.content}}
+			<li>
+
+				<a href="{{ link }}" target="_blank" class="social-{{ icon }}-hover" data-letters="{{ title }}" aria-label="{{ description }}">
+					{{ title }}
+				</a>
+
+			</li>
+			{{/each}}
+
+		</ul>
+		<!-- // SOCIAL -->
+
+	</nav>
+	<!-- // NAV -->
+
+
+	<!-- BACKGROUND -->
+	<div class="nav-panel-background">
+		
+		{{#repeat 2}}
+		<span></span>
+		{{/repeat}}
+
+	</div>
+	<!-- // BACKGROUND -->
+
+
+</div>
+<!-- // CONTENT: NAV PANEL -->

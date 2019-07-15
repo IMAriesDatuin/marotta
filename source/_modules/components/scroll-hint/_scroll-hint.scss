@@ -1,0 +1,361 @@
+/* -------------------------------------------------- */
+/* SCROLL HINT
+/* -------------------------------------------------- */
+
+// OPTIONS
+$scroll-hint-options: (
+	scroll-label: 'WELCOME',
+	font: $copy,
+	color: $white,
+	hover-color: $secondary,
+	width: 1px,
+	height: 75px,
+	radius: 0,
+	duration: 1500ms,
+	reverse: false,
+);
+
+
+// MAIN
+.scroll-hint {
+
+	$self: &;
+
+	@include transition(
+		$property: (opacity),
+		$duration: 200ms,
+		$delay: 0,
+		$ease: $easeNatural,
+		$optimize: false
+	);
+	pointer-events: auto;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+
+	&-line { // LINE
+		@include animate(
+			$name: animate-scroll-hint-line,
+			$direction: normal,
+			$play: true,
+			$duration: map-get($scroll-hint-options, duration),
+			$delay: 0,
+			$repeat: infinite,
+			$ease: $easeWipe,
+			$reset: true
+		);
+		@include transition(
+			$property: (color, transform, background),
+			$duration: map-get($scroll-hint-options, duration),
+			$delay: 0,
+			$ease: $easeWipe,
+			$optimize: false
+		);
+		align-self: center;
+		width: map-get($scroll-hint-options, width);
+		height: map-get($scroll-hint-options, height);
+		border-radius: map-get($scroll-hint-options, radius);
+		background: map-get($scroll-hint-options, color);
+		//transform: scale3d(0,1,1);
+		//transform-origin: top center;
+	}
+
+	&-arrow { // ARROW
+
+		display: none;
+		align-self: center;
+		position: relative;
+		width: 20px;
+
+		span:nth-of-type(1),
+		span:nth-of-type(2) {
+			position: absolute;
+			bottom: 0;
+			width: 10px;
+			height: map-get($scroll-hint-options, width);
+			border-radius: map-get($scroll-hint-options, radius);
+			background: map-get($scroll-hint-options, color);
+		}
+
+		span:nth-of-type(1) {
+			@include animate(
+				$name: animate-scroll-hint-arrow-left,
+				$direction: normal,
+				$play: true,
+				$duration: map-get($scroll-hint-options, duration),
+				$delay: 400ms,
+				$repeat: infinite,
+				$ease: $easeWipe,
+				$reset: true
+			);
+			left: 2px;
+			transform: rotate(45deg);
+		}
+
+		span:nth-of-type(2) {
+			@include animate(
+				$name: animate-scroll-hint-arrow-right,
+				$direction: normal,
+				$play: true,
+				$duration: map-get($scroll-hint-options, duration),
+				$delay: 400ms,
+				$repeat: infinite,
+				$ease: $easeWipe,
+				$reset: true
+			);
+			right: 2px;
+			transform: rotate(-45deg);
+			//transform-origin: center left;
+		}
+
+	}
+
+	&::after { // Label
+		@include animate(
+			$name: animate-scroll-hint-text,
+			$direction: normal,
+			$play: true,
+			$duration: map-get($scroll-hint-options, duration),
+			$delay: 0,
+			$repeat: infinite,
+			$ease: $easeWipe,
+			$reset: true
+		);
+		@include transition(
+			$property: (color),
+			$duration: 400ms,
+			$delay: 0,
+			$ease: 'ease-out',
+			$optimize: false
+		);
+		content: map-get($scroll-hint-options, scroll-label);
+		margin-top: 1rem;
+		color: map-get($scroll-hint-options, color);
+		font: map-get($scroll-hint-options, font);
+		font-size: 1em;
+		letter-spacing: 0.125em;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	&:hover {
+
+		#{$self}-line { // LINE
+			background: map-get($scroll-hint-options, hover-color);
+		}
+
+		#{$self}-arrow { // ARROW
+
+			span:nth-of-type(1),
+			span:nth-of-type(2) {
+				background: map-get($scroll-hint-options, hover-color);
+			}
+
+		}
+
+		&::after { // LABEL
+			color: map-get($scroll-hint-options, hover-color);
+		}
+
+	}
+
+}
+
+
+// MODIFIERS
+.scroll-hint {
+
+	$self: &;
+
+	&.animate-reverse {
+
+		#{$self}-line {
+			animation-direction: reverse;
+		}
+
+		#{$self}-arrow {
+			align-self: center;
+			top: 0;
+			bottom: auto;
+			position: absolute;
+			transform: rotate(180deg);
+		}
+
+	}
+
+	&.is-ready {
+
+	}
+
+	&.is-top {
+
+	}
+
+	&.is-not-top {
+
+		pointer-events: none;
+		opacity: 0;
+
+		#{$self}-line {
+			animation-play-state: paused;
+		}
+
+		#{$self}-arrow {
+
+			span:nth-of-type(1),
+			span:nth-of-type(2) {
+				animation-play-state: paused;
+			}
+
+		}
+
+		&::after {
+			animation-play-state: paused;
+		}
+	
+	}
+
+	&.is-bottom {
+
+	}
+
+	&.is-not-bottom {
+
+	}
+
+	&.is-scrolling-up {
+
+	}
+
+	&.is-scrolling-down {
+
+	}
+
+}
+
+
+// ANIMATIONS
+@keyframes animate-scroll-hint-line {
+
+	0% {
+		transform: scale3d(1,0,1);
+		transform-origin: top center;
+	}
+
+	50% {
+		//background: $accent;
+		transform: scale3d(1,1,1);
+		transform-origin: top center;
+	}
+
+	50.1% {
+		transform: scale3d(1,1,1);
+		transform-origin: bottom center;
+	}
+
+	100% {
+		//background: $white;
+		transform: scale3d(1,0,1);
+		transform-origin: bottom center;
+	}
+
+}
+
+
+@keyframes animate-scroll-hint-arrow-left {
+
+	0% {
+		opacity: 0;
+		transform: scale3d(0,0,1) rotate(45deg);
+	}
+
+	50% {
+		opacity: 1;
+		//background: $accent;
+		transform: scale3d(1,1,1) rotate(45deg);
+	}
+
+	50.1% {
+		opacity: 1;
+		transform: scale3d(1,1,1) rotate(45deg);
+	}
+
+	100% {
+		opacity: 0;
+		//background: $white;
+		transform: scale3d(0,0,1) rotate(45deg);
+	}
+
+}
+
+
+@keyframes animate-scroll-hint-arrow-right {
+
+	0% {
+		opacity: 0;
+		transform: scale3d(0,0,1) rotate(-45deg);
+	}
+
+	50% {
+		opacity: 1;
+		//background: $accent;
+		transform: scale3d(1,1,1) rotate(-45deg);
+	}
+
+	50.1% {
+		opacity: 1;
+		transform: scale3d(1,1,1) rotate(-45deg);
+	}
+
+	100% {
+		opacity: 0;
+		//background: $white;
+		transform: scale3d(0,0,1) rotate(-45deg);
+	}
+
+}
+
+
+@keyframes animate-scroll-hint-text {
+
+	0% {
+		opacity: 0;
+	}
+
+	50% {
+		opacity: 1;
+	}
+
+	50.1% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+
+}
+
+
+// LOGIC
+@if map-get($scroll-hint-options, reverse) == true {
+
+	.scroll-hint {
+
+		&-line {
+			animation-direction: reverse;
+		}
+
+	}
+
+} @else {
+
+	.scroll-hint {
+
+		&-line {
+			animation-direction: forward;
+		}
+
+	}
+
+}

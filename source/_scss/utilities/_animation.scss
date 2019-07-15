@@ -1,0 +1,63 @@
+/* -------------------------------------------------- */
+/* ANIMATION
+/* -------------------------------------------------- */
+
+.animate {
+
+	&-play {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			animation-play-state: running;
+		}
+
+	}
+
+	&-pause {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			animation-play-state: paused !important;
+		}
+
+	}
+
+	&-forward {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			animation-direction: normal;
+		}
+
+	}
+
+	&-reverse {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			animation-direction: reverse;
+		}
+
+	}
+
+	&-loop {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			animation-iteration-count: infinite;
+		}
+
+	}
+
+	&-keep {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			animation-fill-mode: both;
+		}
+
+	}
+
+	&-reset {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			animation-fill-mode: none;
+		}
+
+	}
+
+}

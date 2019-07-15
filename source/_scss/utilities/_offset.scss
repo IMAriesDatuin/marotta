@@ -1,0 +1,66 @@
+/* -------------------------------------------------- */
+/* OFFSET
+/* -------------------------------------------------- */
+
+// OPTIONS
+$offsets: (
+	xs: 10,
+	sm: 20,
+	md: 25,
+	lg: 30,
+	xl: 50,
+	none: 0
+);
+
+
+// MAIN
+.offset {
+
+	@each $name, $offset in $offsets {
+
+		&-top-#{$name} {
+
+			@include breakpoint($prefix: '-', $suffix: '') {
+				position: absolute;
+				top: percentage($offset / 100);
+				bottom: auto;
+			}
+
+		}
+
+		&-right-#{$name} {
+
+			@include breakpoint($prefix: '-', $suffix: '') {
+				position: absolute;
+				left: auto;
+				right: percentage($offset / 100);
+			}
+
+		}
+
+		&-bottom-#{$name} {
+
+			@include breakpoint($prefix: '-', $suffix: '') {
+				position: absolute;
+				top: auto;
+				bottom: percentage($offset / 100);
+			}
+
+		}
+
+		&-left-#{$name} {
+
+			@include breakpoint($prefix: '-', $suffix: '') {
+				position: absolute;
+				left: percentage($offset / 100);
+				right: auto;
+			}
+
+		}
+
+	}
+
+
+
+}
+

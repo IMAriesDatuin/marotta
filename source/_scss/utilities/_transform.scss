@@ -1,0 +1,79 @@
+/* -------------------------------------------------- */
+/* TRANSFORM
+/* -------------------------------------------------- */
+
+.flip {
+
+	&-x {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			transform: scaleX(-1);
+		}
+
+	}
+
+	&-y {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			transform: scaleY(-1);
+		}
+		
+	}
+
+}
+
+.origin {
+
+	&-top {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			transform-origin: top center;
+		}
+		
+	}
+
+	&-right {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			transform-origin: right center;
+		}
+		
+	}
+
+	&-bottom {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			transform-origin: bottom center;
+		}
+		
+	}
+
+	&-left {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			transform-origin: left center;
+		}
+		
+	}
+
+}
+
+.rotate {
+
+	&-90 {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			transform: rotate(90deg);
+		}
+
+	}
+
+	&-45 {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			transform: rotate(45deg);
+		}
+
+	}
+
+}

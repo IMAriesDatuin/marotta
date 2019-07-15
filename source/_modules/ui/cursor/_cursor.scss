@@ -1,0 +1,242 @@
+/* -------------------------------------------------- */
+/* COMPONENT
+/* -------------------------------------------------- */
+
+// OPTIONS
+$cursor-options: (
+	color: $white, // Set the default color.
+	hover-color: $secondary, // Set the color when interacting with elements.
+	size: 25px, // Set the size of the main cursor. 
+	hide-default-cursor: false, // Hide the default cursor. It is recommened to leave this false for usability.
+	blend-mode: normal, // Set the blend-mode when interacting with elements: color, color-burn, color-dodge, exclusion, darken, hue, lighten, luminosity, normal, hard-light, multiply, overlay, saturation, screen, soft-light
+	duration: 200ms, // Set the duration of the animation.
+	delay: 0, // Delay the animation by this amount. 
+	ease: ease-out // Set the easing type for this animation.
+);
+
+
+// MAIN
+.cursor {
+
+	@include transition(
+		$property: (opacity),
+		$duration: map-get($cursor-options, duration),
+		$delay: map-get($cursor-options, delay),
+		$ease: map-get($cursor-options, ease),
+		$optimize: false
+	);
+	pointer-events: none;
+	user-select: none;
+	opacity: 0;
+	overflow: visible; // Note: Bug in Safari causing only a quarter of the circle to show up.
+	visibility: hidden;
+	position: fixed;
+	mix-blend-mode: map-get($cursor-options, blend-mode);
+
+	&-core,
+	&-arrow, &-plus,
+	&-circular {
+		@include transition(
+			$property: (opacity, top, left, border, background, transform),
+			$duration: map-get($cursor-options, duration),
+			$delay: map-get($cursor-options, delay),
+			$ease: map-get($cursor-options, ease),
+			$optimize: false
+		);
+		position: fixed;
+		font-size: 0.75em;
+		border-radius: 100%;
+		transform: translate(-50%,-50%) scale3d(0.2,0.2,1) rotate(-90deg);
+		transform-origin: center center;
+	}
+
+	&-core {
+		width: 1024px;
+		height: 1024px;
+		//width: map-get($cursor-options, size) * 0.5;
+		//height: map-get($cursor-options, size) * 0.5;
+		background: map-get($cursor-options, color);
+		transform: translate(-50%,-50%) scale3d(0.005,0.005,1) rotate(-90deg);
+	}
+
+	&-arrow {
+		z-index: 1;
+		color: map-get($cursor-options, hover-color);
+		transform: translate(-50%,-50%) scale3d(0,0,1) rotate(45deg);
+		mix-blend-mode: normal;
+	}
+
+	&-plus {
+		opacity: 0;
+		color: map-get($cursor-options, color);
+	}
+
+	&-circular {
+
+		$self: &;
+
+		width: 12%;
+		height: 12%;
+
+		#{$self}-foreground,
+		#{$self}-background,
+		#{$self}-wavelength {
+			@include transition(
+				$property: (opacity, fill, stroke-width),
+				$duration: map-get($cursor-options, duration),
+				$delay: map-get($cursor-options, delay),
+				$ease: map-get($cursor-options, ease),
+				$optimize: false
+			);
+			fill: none;
+			stroke: $dark-gray;
+			stroke-miterlimit: 10;
+			stroke-linecap: butt;
+			stroke-linejoin: miter;
+			stroke-miterlimit: 10;
+			stroke-width: 3px;
+			backface-visibility: hidden;
+			transform-origin: center center;
+		}
+
+		#{$self}-foreground {
+			stroke: map-get($cursor-options, color);
+		}
+
+		#{$self}-background {
+			stroke: $charcoal;
+		}
+
+		#{$self}-wavelength {
+			stroke: map-get($cursor-options, color);
+			stroke-width: 1px;
+		}
+
+	}
+
+}
+
+
+// MODIFIERS
+.cursor {
+
+	$self: &;
+
+	&.is-hovering {
+
+		#{$self}-core {
+			//opacity: 0;
+			color: map-get($cursor-options, hover-color);
+			//background: map-get($cursor-options, hover-color);
+			//transform: translate(-50%,-50%) scale3d(0.5,0.5,1);
+		}
+
+		#{$self}-plus {
+			//opacity: 0;
+			color: map-get($cursor-options, hover-color);
+			//transform: translate(-50%,-50%) scale3d(1,1,1) rotate(-90deg);
+		}
+
+		#{$self}-circular {
+
+			transform: translate(-50%,-50%) scale3d(0.4,0.4,1) rotate(-90deg);
+
+			&-foreground {
+				stroke: map-get($cursor-options, hover-color);
+			}
+
+			&-wavelength {
+				stroke: map-get($cursor-options, hover-color);
+			}
+
+		}
+
+	}
+
+	&.is-down {
+
+		#{$self}-core {
+			opacity: 0;
+			//background: map-get($cursor-options, hover-color);
+			//transform: translate(-50%,-50%) scale3d(0.05,0.05,1) rotate(-90deg);
+		}
+
+		#{$self}-plus {
+			opacity: 1;
+			transform: translate(-50%,-50%) scale3d(1,1,1) rotate(0deg);
+		}
+
+
+		#{$self}-circular {
+
+			transform: translate(-50%,-50%) scale3d(0.5,0.5,1) rotate(-90deg);
+
+			&-foreground,
+			&-background {
+				
+			}
+
+			&-wavelength {
+				//stroke: map-get($cursor-options, color);
+				//stroke-width: 2px;
+			}
+
+		}
+
+	}
+
+	&.is-moving {
+
+	}
+
+	&.is-previous {
+
+		#{$self}-arrow {
+			transform: translate(-50%,-50%) scale3d(1,1,1) rotate(-180deg);
+		}
+
+	}
+
+	&.is-next {
+
+		#{$self}-arrow {
+			transform: translate(-50%,-50%) scale3d(1,1,1) rotate(0);
+		}
+
+	}
+
+	&.no-cursor {
+		opacity: 0 !important;
+	}
+
+}
+
+
+// ANIMATIONS
+/*
+@keyframes animate-cursor-core {
+
+	0% {
+		opacity: 0;
+	}
+
+	50% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+
+}
+*/
+
+
+// LOGIC
+@if map-get($cursor-options, hide-default-cursor) == true {
+
+	:root {
+		cursor: none;
+	}
+
+}

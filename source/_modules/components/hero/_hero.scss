@@ -1,0 +1,292 @@
+/* -------------------------------------------------- */
+/* HERO
+/* -------------------------------------------------- */
+
+// OPTIONS
+$hero-options: (
+	scroll-label: 'Welcome',
+	font: $copy, // Defined the font for the text links.
+	text-color: $white, // Set the default color for all elements.
+	text-hover-color: $accent, // Set the hover color for all elements.
+	background-color: $white, // Set the nav panel's background color.
+	background-hover-color: $white, // Set the nav panel's background color.
+	blend-mode: luminosity, // Set the blend-mode when interacting with elements: color, color-burn, color-dodge, exclusion, darken, hue, lighten, luminosity, normal, hard-light, multiply, overlay, saturation, screen, soft-light
+	duration: 400ms, // Set the duration of the animation.
+	delay: 0, // Delay the animation by this amount. 
+	ease: $easeWipe // Set the easing type for this animation.
+);
+
+
+// MAIN
+.hero {
+
+	$self: &;
+
+	z-index: 0;
+	overflow: hidden;
+	position: relative;
+	margin: 0 auto;
+	width: 100%;
+	//max-width: 100%;
+	//height: 75%;
+	//min-height: 75vh;
+	background: $black;
+	
+	.block-cap {
+
+		z-index: 3;
+
+		@include break($min: 0, $max: $mobile, $orientation: 'both') {
+			height: 75px;
+		}
+
+	}
+
+	&-container {
+
+		z-index: 2;
+		position: absolute;
+		left: 50%;
+		padding: {
+			left: $gutter;
+			right: $gutter;
+		}
+		width: 100%;
+		transform: translateX(-50%);
+
+		#{$self}-quotes {
+
+			position: relative;
+			padding: 6rem;
+
+			.quote {
+
+				color: $white;
+				font: $subheadline;
+				font-size: 4em;
+				line-height: 0.6em;
+				text-align: center;
+
+				@include break($min: 0, $max: $mobile, $orientation: 'both') {
+					font-size: 2em;
+				}
+
+			}
+
+		}
+
+		#{$self}-button-group {
+
+			padding: 0;
+			width: 100%;
+			max-width: 50%;
+
+			@include break($min: $tablet, $max: $laptop, $orientation: 'portrait') {
+				max-width: 90%;
+			}
+
+			@include break($min: $tablet, $max: $laptop, $orientation: 'landscape') {
+				max-width: 60%;
+			}
+
+			@include break($min: $mobile, $max: $tablet, $orientation: 'both') {
+				max-width: 100%;
+			}
+
+			@include break($min: 0, $max: $mobile, $orientation: 'portrait') {
+				max-width: 100%;
+			}
+
+		}
+
+		#{$self}-social {
+
+			text-align: center;
+
+			li {
+
+				overflow: hidden;
+				display: inline-block;
+				margin: {
+					right: 1rem;
+					bottom: 0;
+					left: 1rem;
+				};
+
+				a {
+
+					@include transition(
+						$property: (color),
+						$duration: map-get($hero-options, duration),
+						$delay: map-get($hero-options, delay),
+						$ease: map-get($hero-options, ease),
+						$optimize: false
+					);
+					overflow: hidden;
+					position: relative;
+					color: map-get($hero-options, text-color);
+					font: map-get($hero-options, font);
+					font-size: 1.25em;
+					letter-spacing: 0.125em;
+					text-transform: uppercase;
+					white-space: nowrap;
+
+					&:hover {
+						color: map-get($hero-options, text-hover-color);
+					}
+
+				}
+
+			}
+
+			@include break($min: 0, $max: $mobile, $orientation: 'landscape') {
+				display: none;
+			}
+
+		}
+
+		#{$self}-scroll-hint {
+
+			pointer-events: all;
+			z-index: 0;
+			display: block;
+			position: relative;
+			margin: {
+				top: 4rem;
+				right: auto;
+				left: auto;
+			}
+			width: 50%;
+
+			.scroll-hint {
+
+				&-line { // LINE
+					background: map-get($hero-options, text-color);
+				}
+
+				&-arrow { // ARROW
+
+					span:nth-of-type(1),
+					span:nth-of-type(2) {
+						background: map-get($hero-options, text-color);
+					}
+
+				}
+
+				&::after { // Label
+					content: map-get($hero-options, scroll-label);
+					color: map-get($hero-options, text-color);
+					font: map-get($hero-options, font);
+				}
+
+				&:hover {
+
+					&-line { // LINE
+						background: map-get($hero-options, text-hover-color);
+					}
+
+					&-arrow { // ARROW
+
+						span:nth-of-type(1),
+						span:nth-of-type(2) {
+							background: map-get($hero-options, text-hover-color);
+						}
+
+					}
+
+					&::after { // LABEL
+						color: map-get($hero-options, text-hover-color);
+					}
+
+				}
+
+			}
+
+			@include break($min: $mobile, $max: $tablet, $orientation: 'landscape') {
+				display: none;
+			}
+
+			@include break($min: 0, $max: $mobile, $orientation: 'both') {
+				display: none;
+			}
+
+		}
+
+	}
+
+	&-overlay {
+		z-index: 1;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba($black, 1);
+	}
+
+	&-media {
+
+		z-index: 0;
+		overflow: hidden;
+		position: relative;
+		width: 100%;
+		height: 75vh;
+		transform-origin: center center;
+
+		video {
+
+			transition-duration: 0 !important;
+
+			&::-webkit-media-controls {
+				display: none !important;
+			}
+
+		}
+
+		@include break($min: 0, $max: $mobile, $orientation: 'landscape') {
+			height: 100vh;
+		}
+
+	}
+
+}
+
+
+// MODIFIERS
+.hero {
+
+	$self: &;
+
+	#{$self}-element {
+		
+	}
+
+	&.is-ready {
+
+	}
+
+	&.is-top {
+
+	}
+
+	&.is-not-top {
+
+	}
+
+	&.is-bottom {
+
+	}
+
+	&.is-not-bottom {
+
+	}
+
+	&.is-scrolling-up {
+
+	}
+
+	&.is-scrolling-down {
+
+	}
+
+}

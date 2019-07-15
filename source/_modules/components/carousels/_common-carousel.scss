@@ -1,0 +1,131 @@
+/* -------------------------------------------------- */
+/* COMMON CAROUSEL
+/* -------------------------------------------------- */
+
+// OPTIONS
+$carousel-options: (
+	background-color: transparent,
+	duration: 1000ms,
+	delay: 400ms,
+	ease: $easeWipe
+);
+
+
+// MAIN
+.carousel {
+
+	@include transition(
+		$property: (opacity),
+		$duration: 200ms,
+		$delay: 800ms,
+		$ease: $easeNatural,
+		$optimize: false
+	);
+	opacity: 0;
+	visibility: hidden;
+
+	.flickity-viewport {
+
+		@include transition(
+			$property: (height),
+			$duration: 400ms,
+			$delay: 0,
+			$ease: $easeNatural,
+			$optimize: true
+		);
+		//cursor: grab;
+		//width: 100%;
+		//height: 100%;
+
+		.flickity-slider {
+			//display: flex;
+		}
+
+	}
+
+}
+
+
+// LAZY LOAD
+.carousel-lazy-load {
+
+	background: map-get($carousel-options, background-color);
+
+	&::before {
+
+		@include transition(
+			$property: (transform),
+			$duration: map-get($carousel-options, duration),
+			$delay: map-get($carousel-options, delay),
+			$ease: map-get($carousel-options, ease),
+			$optimize: false
+		);
+		content: '';
+		z-index: 1;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: $white;
+		transform: scale3d(1,1,1);
+		transform-origin: right center;
+
+	}
+
+	img {
+
+		@include transition(
+			$property: (opacity),
+			$duration: map-get($carousel-options, duration),
+			$delay: map-get($carousel-options, delay),
+			$ease: $easeNatural,
+			$optimize: false
+		);
+		opacity: 0;
+		//min-width: 150px;
+		min-height: 1px;
+
+	}
+
+	&.is-loaded {
+
+		&::before {
+			transform: scale3d(0,1,1);
+		}
+
+		img {
+			opacity: 1;
+		}
+
+	}
+
+	&.flickity-lazyerror {
+		width: 100%;
+		height: 1080px;
+		background-image: url(../assets/error-static.gif);
+		background-repeat: repeat;
+	}
+
+}
+
+
+// MODIFIERS
+.carousel {
+
+	$self: &;
+
+	&.is-ready {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	&.is-first-cell {
+		
+	}
+
+	&.is-last-cell {
+		
+	}
+
+}

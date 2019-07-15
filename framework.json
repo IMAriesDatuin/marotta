@@ -1,0 +1,75 @@
+{
+	"bundle": "framework",
+	"source": "node_modules/",
+	"files": ["<JQUERY>",
+			  ">>jquery/dist/jquery.js",
+			  "jquery/dist/jquery.slim.js",
+			  ">>jquery.easing/jquery.easing.js",
+
+
+			  "<CORE>",
+			  "foundation-sites/dist/js/plugins/foundation.core.js",
+			  ">>what-input/dist/what-input.js",
+
+
+			  "<UTILITIES>",
+			  ">>foundation-sites/dist/js/plugins/foundation.util.box.js",
+			  ">>foundation-sites/dist/js/plugins/foundation.util.imageLoader.js",
+			  ">>foundation-sites/dist/js/plugins/foundation.util.keyboard.js",
+			  ">>foundation-sites/dist/js/plugins/foundation.util.mediaQuery.js",
+			  ">>foundation-sites/dist/js/plugins/foundation.util.motion.js",
+			  ">>foundation-sites/dist/js/plugins/foundation.util.nest.js",
+			  ">>foundation-sites/dist/js/plugins/foundation.util.timer.js",
+			  ">>foundation-sites/dist/js/plugins/foundation.util.touch.js",
+			  ">>foundation-sites/dist/js/plugins/foundation.util.triggers.js",
+
+
+			  "<CONTROLS>",
+			  ">>foundation-sites/dist/js/plugins/foundation.slider.js",
+
+
+			  "<NAVIGATION>",
+			  ">>foundation-sites/dist/js/plugins/foundation.dropdownMenu.js",
+			  ">>foundation-sites/dist/js/plugins/foundation.drilldown.js",
+			  ">>foundation-sites/dist/js/plugins/foundation.accordionMenu.js",
+			  ">>foundation-sites/dist/js/plugins/foundation.magellan.js",
+
+
+			  "<CONTAINERS>",
+			  ">>foundation-sites/dist/js/plugins/foundation.accordion.js",
+			  ">>foundation-sites/dist/js/plugins/foundation.dropdown.js",
+			  ">>foundation-sites/dist/js/plugins/foundation.offcanvas.js",
+			  ">>foundation-sites/dist/js/plugins/foundation.reveal.js",
+			  ">>foundation-sites/dist/js/plugins/foundation.tabs.js",
+			  ">>foundation-sites/dist/js/plugins/foundation.responsiveAccordionTabs.js",
+
+
+			  "<MEDIA>",
+			  ">>foundation-sites/dist/js/plugins/foundation.orbit.js",
+			  ">>foundation-sites/dist/js/plugins/foundation.tooltip.js",
+
+
+			  "<PLUGINS>",
+			  ">>foundation-sites/dist/js/plugins/foundation.abide.js",
+			  ">>foundation-sites/dist/js/plugins/foundation.equalizer.js",
+			  ">>foundation-sites/dist/js/plugins/foundation.interchange.js",
+			  ">>foundation-sites/dist/js/plugins/foundation.toggler.js",
+			  ">>foundation-sites/dist/js/plugins/foundation.smoothScroll.js",
+			  ">>foundation-sites/dist/js/plugins/foundation.sticky.js",
+
+
+			  "<SWUP>",
+			  ">>swup/dist/swup.js",
+			  ">>@swup/body-class-plugin/dist/SwupBodyClassPlugin.js",
+			  ">>@swup/debug-plugin/dist/SwupDebugPlugin.js",
+			  ">>@swup/forms-plugin/dist/SwupFormsPlugin.js",
+			  ">>@swup/ga-plugin/dist/SwupGaPlugin.js",
+			  ">>@swup/gtm-plugin/dist/SwupGtmPlugin.js",
+			  ">>@swup/head-plugin/dist/SwupHeadPlugin.js",
+			  ">>@swup/js-plugin/dist/SwupJsPlugin.js",
+			  ">>@swup/preload-plugin/dist/SwupPreloadPlugin.js",
+			  ">>@swup/scripts-plugin/dist/SwupScriptsPlugin.js",
+			  ">>@swup/scroll-plugin/dist/SwupScrollPlugin.js"
+			]
+
+}

@@ -1,0 +1,63 @@
+/* -------------------------------------------------- */
+/* HELPERS
+/* -------------------------------------------------- */
+
+.clear {
+
+	*zoom: 1;
+
+	&::before, &::after {
+		content: '';
+		display: table;
+	}
+
+	&::after {
+		clear: both;
+	}
+
+}
+
+.preserve-3d {
+	transform-style: preserve-3d;
+}
+
+.pseudo {
+	content: '';
+	position: absolute;
+}
+
+
+// Create a style-cleaned and self-contained component.
+.reset {
+	all: initial;
+	contain: content;
+}
+
+
+// Set properties to inital values. *Note: Note supported in IE 11.
+.unset {
+
+	all: unset;
+
+}
+
+
+/* -------------------------------------------------- */
+/* HACKS 
+/* -------------------------------------------------- */
+
+// SplitText fix for font rendering. Prevents blinking. Only apply to text animated with SplitText, otherwise this is a very performance heavy fix.
+.fix-font-render {
+	font-kerning: none;
+	-webkit-text-rendering: optimizeSpeed;
+	text-rendering: optimizeSpeed;
+	transform: translateZ(0);
+}
+
+// Force use of graphics memory rendering. Use sparingly.
+.force-gpu {
+	backface-visibility: hidden;
+	perspective: 1000;
+	transform: translateZ(0);
+	will-change: transform;
+}

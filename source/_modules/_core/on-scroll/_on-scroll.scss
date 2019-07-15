@@ -1,0 +1,28 @@
+/* -------------------------------------------------- */
+/* ON SCROLL
+/* -------------------------------------------------- */
+
+// OPTIONS
+$on-scroll-options: (
+	duration: 500ms,
+	delay: 0,
+	ease: ease-out
+);
+
+
+// MAIN
+.on-scroll {
+
+	$self: &;
+
+	&-animate {
+		@include transition(
+			$property: (opacity, transform),
+			$duration: map-get($on-scroll-options, duration),
+			$delay: map-get($on-scroll-options, delay),
+			$ease: map-get($on-scroll-options, ease),
+			$optimize: true
+		);
+	}
+
+}

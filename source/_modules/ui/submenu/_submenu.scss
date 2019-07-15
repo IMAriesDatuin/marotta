@@ -1,0 +1,203 @@
+/* -------------------------------------------------- */
+/* SUBMENU
+/* -------------------------------------------------- */
+
+// OPTIONS
+$submenu-options: (
+	font: $copy,
+
+	text-color: $charcoal,
+	text-hover-color: $secondary,
+	active-text-color: $black,
+
+	background-color: $white,
+	background-hover-color: $primary,
+	active-background-color: $white,
+
+	drop-shadow-color: #38448f,
+
+	radius: 6px,
+
+	truncate: false,
+	duration: 250ms,
+	delay: 0,
+	ease: $easeNatural
+);
+
+
+// MAIN
+.menu {
+
+	$self: &;
+
+	@include transition(
+		$property: (opacity),
+		$duration: map-get($submenu-options, duration),
+		$delay: map-get($submenu-options, delay),
+		$ease: map-get($submenu-options, ease),
+		$optimize: false
+	);
+	//overflow: hidden;
+	position: relative;
+	margin: {
+		right: auto;
+		bottom: 4rem;
+		left: auto;
+	}
+	width: 100%;
+	max-width: 800px;
+	border-bottom: thin solid $gray;
+	background: $white;
+
+	> li {
+
+		display: inline-block;
+		background: map-get($submenu-options, background-color);
+
+		a {
+			display: block;
+			padding: 1.5rem;
+			color: map-get($submenu-options, text-color);
+			font: map-get($submenu-options, font);
+			font-size: 1.125em;
+		}
+
+	}
+
+	@include break($min: 0, $max: $mobile, $orientation: '') {
+		//display: none;
+	}
+	
+}
+
+
+.submenu {
+
+	$self: &;
+
+	&-content {
+
+		@include shadow(
+			$type: 'box-shadow',
+			$color: map-get($submenu-options, drop-shadow-color),
+			$x: 0,
+			$y: 14px,
+			$blur: 32px,
+			$spread: 0,
+			$alpha: 0.4,
+			$strength: 0,
+			$inset: false
+		);
+		@include transition(
+			$property: (opacity),
+			$duration: map-get($submenu-options, duration),
+			$delay: map-get($submenu-options, delay),
+			$ease: map-get($submenu-options, ease),
+			$optimize: false
+		);
+		opacity: 0;
+		overflow: hidden;
+		position: absolute;
+		top: -15em;
+		right: 0;
+		width: 100%;
+		height: auto;
+		max-width: 300px;
+		border-radius: map-get($submenu-options, radius);
+		border: thin solid $gray;
+		background: $white;
+
+		> li {
+
+			display: block;
+			border-bottom: thin solid rgba($gray, 0.5);
+			background: map-get($submenu-options, background-color);
+
+			a {
+				@include transition(
+					$property: (color, background),
+					$duration: map-get($submenu-options, duration),
+					$delay: map-get($submenu-options, delay),
+					$ease: map-get($submenu-options, ease),
+					$optimize: false
+				);
+				display: block;
+				padding: 1.5rem;
+				color: map-get($submenu-options, text-color);
+				font: map-get($submenu-options, font);
+				font-size: 1.125em;
+			}
+
+			&:hover {
+
+				a {
+					color: map-get($submenu-options, text-hover-color);
+				}
+
+			}
+
+		}
+
+	}
+
+	&-is-active {
+
+		#{$self}-content {
+			opacity: 1;
+		}
+
+	}
+
+	@include break($min: 0, $max: $mobile, $orientation: '') {
+		//display: none;
+	}
+	
+}
+
+
+// MODIFIERS
+.submenu {
+
+	$self: &;
+
+	#{$self}-element {
+		
+	}
+
+	&.is-ready {
+
+	}
+
+	&.is-top {
+
+	}
+
+	&.is-not-top {
+
+	}
+
+	&.is-bottom {
+
+	}
+
+	&.is-not-bottom {
+
+	}
+
+	&.is-scrolling-up {
+
+	}
+
+	&.is-scrolling-down {
+
+	}
+
+}
+
+
+// LOGIC
+@if null == true {
+
+} @else {
+
+}

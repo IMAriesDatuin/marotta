@@ -1,0 +1,1001 @@
+/* -------------------------------------------------- */
+/* NAVBAR
+/* -------------------------------------------------- */
+
+// OPTIONS
+$navbar-options: (
+	logo: (
+		color: $white, // Set the initial logo's color.
+		alt-color: $white,
+		active-color: $white, // Set the actvie state color when the menu is open.
+		size: 50%, // Set an initial (responsive) logo size. This is not a fixed width and will scale according to viewport size.
+		allow: true, // Switch beteen 2 different logos depending on viewport size.
+		desktop-id: '.logo-desktop', // Define a logo when the viewport is greater than the breakpoint.
+		mobile-id: '.logo-mobile', // Define a logo when the viewport is less than the breakpoint.
+		duration: 250ms, // Set how quickly the transition between desktop-id and mobile-id happens.
+		delay: 0,
+		ease: $easeNatural
+	),
+	menu: (
+		font: $copy,
+		text-color: $white,
+		text-hover-color: $accent,
+		text-alt-color: $secondary,
+		alignment: right, // Align menu items: left or right. *Note: This option does not apply if reverse is set to true.
+		spacing: 0, // Set the spacing between menu items.
+		duration: 250ms,
+		delay: 0,
+		ease: $easeNatural
+	),
+	cta: (
+		allow: true,
+		size: 25%,
+		text-color: $charcoal,
+		text-hover-color: $accent,
+		background-color: $white,
+		background-hover-color: $accent,
+		truncate: true
+	),
+	menu-toggle: (
+		open-label: 'MENU', // Set the label or leave blank. Long text will be truncated.
+		close-label: 'CLOSE', // Set the label or leave blank. Long text will be truncated.
+		font: $copy,
+
+		color: $white, // Set the default color or inactive state.
+		hover-color: $accent,
+		alt-color: $white,
+		active-color: $white, // Set the active state color when the menu is open.
+
+		border-color: transparent, // Set the menu toggle icon's border color.
+		border-hover-color: $accent,
+		border-alt-color: transparent,
+		border-active-color: $white, // Set the active border state color when the menu is open.
+
+		background-color: transparent, // Set the menu toggle icon's background color.
+		background-hover-color: transparent,
+		background-alt-color: transparent,
+		background-active-color: transparent, // Set the active state color when the menu is open.
+
+		size: 0.5em, // Set the size of the menu toggle icon.
+		thickness: 0.3em, // Defines the thickness of lines.
+		radius: 0, // Defines the roundness of lines.
+		duration: 200ms, // Set the duration of the animation.
+		delay: 0, // Delay the animation by this amount. 
+		ease: $easeNatural // Set the easing type for this animation.
+	),
+	persistent-navbar: true, // Allows the navbar to stick to the top.
+	persistent-toggle: false, // Hide links and only show the toggle menu.
+	reverse: false, // If set to false navbar will display logo on left and links/icon toggle menu on the right. If set to true the order will be reversed.
+	show-on-page-end: true, // Show the navbar when the scroll position is at the bottom.
+	show-on-scrolling-up: true, // Show the navbar while scrolling up. *Note: persistent-navbar will be disabled and scrolling down will hide the navbar.
+	break: 1366px, // Defines when the toggle menu is activated.
+	//width: map-get($section, width),
+	width: 2560px,
+	height: 125px,
+	shrink-height: 100px,
+	background-color: transparent,
+	background-alt-color: rgba($charcoal, 0.7),
+	background-filter: 15px,
+	blend-mode: normal, // Set the blend-mode when interacting with elements: color, color-burn, color-dodge, exclusion, darken, hue, lighten, luminosity, normal, hard-light, multiply, overlay, saturation, screen, soft-light.
+	duration: 400ms, // Set the duration of the animation.
+	delay: 0, // Delay the animation by this amount. 
+	ease: $easeNatural // Set the easing type for this animation.
+);
+
+
+// NAVBAR
+.navbar {
+
+	$self: &;
+
+	@include transition(
+		$property: (max-height, background, transform),
+		$duration: 400ms,
+		$delay: 0,
+		$ease: $easeNatural,
+		$optimize: false
+	);
+	//pointer-events: none;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	max-height: map-get($navbar-options, height);
+	background: map-get($navbar-options, background-color);
+	mix-blend-mode: map-get($navbar-options, blend-mode);
+
+	/*
+	@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+		//backdrop-filter: blur(map-get($navbar-options, backdrop-filter));
+		//background: rgba($charcoal, 0);
+		//background: linear-gradient(to bottom, rgba($charcoal, 1) 0%, rgba($charcoal, 0) 100%);
+	}
+	*/
+
+	.menubar {
+
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-items: center;
+		justify-content: space-between;
+		margin: {
+			right: auto;
+			left: auto;
+		}
+		padding: {
+			top: 0;
+			right: 5rem;
+			bottom: 0;
+			left: 4rem;
+		}
+		width: 100%;
+		height: 100%;
+		max-width: map-get($navbar-options, width);
+		//max-height: map-get($navbar-options, height);
+
+		&-logo, &-menu, &-toggle {
+			display: flex;
+			flex: 1 2 25%;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			height: 100%;
+		}
+
+		&-logo {
+
+			@include transition(
+				$property: (opacity, transform),
+				$duration: map-get(map-get($navbar-options, logo), duration),
+				$delay: map-get(map-get($navbar-options, logo), delay),
+				$ease: map-get(map-get($navbar-options, logo), ease),
+				$optimize: false
+			);
+			pointer-events: all;
+			opacity: 1;
+			justify-content: flex-start;
+			padding: {
+				top: 1rem;
+				bottom: 1rem;
+			}
+			transform: translate3d(0,0,0);
+
+			.logo {
+				
+				@include transition(
+					$property: (color),
+					$duration: map-get(map-get($navbar-options, logo), duration),
+					$delay: map-get(map-get($navbar-options, logo), delay),
+					$ease: map-get(map-get($navbar-options, logo), ease),
+					$optimize: false
+				);
+				margin-bottom: 0;
+				width: auto;
+				max-width: 100%;
+				height: map-get(map-get($navbar-options, logo), size);
+				color: map-get(map-get($navbar-options, logo), color);
+				font-size: 1.75em;
+				line-height: 0.9em;
+				text-align: center;
+				text-transform: uppercase;
+				fill: map-get(map-get($navbar-options, logo), color);
+
+				path {
+					@include transition(
+						$property: (fill),
+						$duration: map-get(map-get($navbar-options, logo), duration),
+						$delay: map-get(map-get($navbar-options, logo), delay),
+						$ease: map-get(map-get($navbar-options, logo), ease),
+						$optimize: false
+					);
+					fill: map-get(map-get($navbar-options, logo), color);
+				}
+
+			}
+
+			&.is-open {
+
+				.logo {
+					color: map-get(map-get($navbar-options, logo), active-color);
+					fill: map-get(map-get($navbar-options, logo), active-color);
+				}
+
+			}
+
+		}
+
+		&-menu {
+
+			flex: 2 1 auto;
+
+			ul {
+
+				li {
+
+					@include transition(
+						$property: (color),
+						$duration: map-get(map-get($navbar-options, menu), duration),
+						$delay: map-get(map-get($navbar-options, menu), delay),
+						$ease: map-get(map-get($navbar-options, menu), ease),
+						$optimize: false
+					);
+					float: left;
+					display: inline-flex;
+					flex-direction: row;
+					flex-wrap: nowrap;
+					align-items: center;
+					justify-content: center;
+					position: relative;
+					margin-right: map-get(map-get($navbar-options, menu), spacing);
+					height: 100%;
+					color: map-get(map-get($navbar-options, menu), text-color);
+
+					a {
+						display: block;
+						padding: 1.5rem;
+						color: inherit;
+						font: map-get(map-get($navbar-options, menu), font);
+						font-size: 1em;
+						letter-spacing: 0.125em;
+						text-transform: uppercase;
+					}
+
+					&::after {
+						@include transition(
+							$property: (transform),
+							$duration: map-get(map-get($navbar-options, menu), duration),
+							$delay: map-get(map-get($navbar-options, menu), delay),
+							$ease: map-get(map-get($navbar-options, menu), ease),
+							$optimize: false
+						);
+						content: '';
+						position: absolute;
+						left: 50%;
+						bottom: 0;
+						width: 50%;
+						height: 1px;
+						background: map-get(map-get($navbar-options, menu), text-hover-color);
+						transform: translateX(-50%) scale3d(0,1,1);
+						tranform-origin: center center;
+					}
+
+					&:last-child {
+						margin-right: 0;
+					}
+
+					&:hover,
+					&.is-active {
+
+						color: map-get(map-get($navbar-options, menu), text-hover-color);
+
+						&::after {
+							transform: translateX(-50%) scale3d(1,1,1);
+						}
+
+					}
+
+					&.is-active {
+						cursor: not-allowed;
+						pointer-events: none;
+					}
+
+				}
+
+			}
+
+			@include break($min: 0, $max: map-get($navbar-options, break), $orientation: '') {
+				display: none;
+			}
+
+			@include break($min: 0, $max: $tablet, $orientation: '' ) {
+				justify-content: center;
+				margin: 0 auto;
+			}
+
+		}
+
+		&-cta {
+
+			flex: 2 1 map-get(map-get($navbar-options, cta), size);
+			background: map-get(map-get($navbar-options, cta), background-color);
+
+			.button-label {
+				color: map-get(map-get($navbar-options, cta), text-color);
+			}
+
+			.button-icon {
+				color: map-get(map-get($navbar-options, cta), text-color);
+				border-left: thin dotted map-get(map-get($navbar-options, cta), text-color);
+			}
+
+			&:hover {
+				color: map-get(map-get($navbar-options, cta), text-hover-color);
+				background: map-get(map-get($navbar-options, cta), background-hover-color);
+			}
+
+			@include break($min: 0, $max: map-get($navbar-options, break), $orientation: '') {
+				display: none;
+			}
+
+		}
+
+		&-toggle {
+
+			pointer-events: all;
+			display: none;
+			justify-content: flex-end;
+
+			&-icon {
+
+				cursor: pointer;
+				position: relative;
+				width: 4em;
+				height: auto;
+				font-size: map-get(map-get($navbar-options, menu-toggle), size);
+				-webkit-tap-highlight-color: transparent;
+
+				span { // TOGGLE LINE
+
+					@include transition(
+						$property: (background, transform),
+						$duration: map-get(map-get($navbar-options, menu-toggle), duration),
+						$delay: map-get(map-get($navbar-options, menu-toggle), delay),
+						$ease: map-get(map-get($navbar-options, menu-toggle), ease),
+						$optimize: false
+					);
+					content: '';
+					display: block;
+					position: relative;
+					top: 50%;
+					margin-top: -0.125em;
+					width: 100%;
+					height: map-get(map-get($navbar-options, menu-toggle), thickness);
+					border-radius: map-get(map-get($navbar-options, menu-toggle), radius);
+					background: map-get(map-get($navbar-options, menu-toggle), color);
+					transform: rotate(0);
+
+					&::before,
+					&::after {
+						@include transition(
+							$property: (left, right),
+							$duration: map-get(map-get($navbar-options, menu-toggle), duration),
+							$delay: map-get(map-get($navbar-options, menu-toggle), delay),
+							$ease: map-get(map-get($navbar-options, menu-toggle), ease),
+							$optimize: false
+						);
+						content: '';
+						pointer-events: none;
+						position: absolute;
+						width: 1.5em;
+						height: map-get(map-get($navbar-options, menu-toggle), thickness);
+						border-radius: map-get(map-get($navbar-options, menu-toggle), radius);
+						background: map-get(map-get($navbar-options, menu-toggle), color);
+						transform: rotate(0);
+					}
+
+					&::before {
+						top: 1em;
+						right: 0;
+					}
+
+					&::after {
+						top: -1em;
+						left: 0;
+					}
+
+				}
+
+				&::after { // BORDER / BACKGROUND
+					@include transition(
+						$property: (opacity, border, background),
+						$duration: map-get(map-get($navbar-options, menu-toggle), duration),
+						$delay: map-get(map-get($navbar-options, menu-toggle), delay),
+						$ease: map-get(map-get($navbar-options, menu-toggle), ease),
+						$optimize: false
+					);
+					content: '';
+					cursor: crosshair;
+					z-index: -1;
+					opacity: 1;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					padding: 3rem;
+					width: 100%;
+					height: 100%;
+					border-radius: 100%;
+					border: map-get(map-get($navbar-options, menu-toggle), thickness) solid map-get(map-get($navbar-options, menu-toggle), border-color);
+					background: map-get(map-get($navbar-options, menu-toggle), background-color);
+					transform: translateX(-50%) translateY(-50%);
+				}
+
+			}
+
+			&-label {
+
+				@include animate(
+					$name: animate-menubar-toggle-is-closed,
+					$direction: normal,
+					$play: true,
+					$duration: map-get(map-get($navbar-options, menu-toggle), duration),
+					$delay: map-get(map-get($navbar-options, menu-toggle), delay),
+					$repeat: 1,
+					$ease: map-get(map-get($navbar-options, menu-toggle), ease),
+					$reset: true
+				);
+				@include transition(
+					$property: (color, transform),
+					$duration: map-get(map-get($navbar-options, menu-toggle), duration),
+					$delay: map-get(map-get($navbar-options, menu-toggle), delay),
+					$ease: map-get(map-get($navbar-options, menu-toggle), ease),
+					$optimize: false
+				);
+				cursor: pointer;
+				overflow: hidden;
+				padding: {
+					left: 2rem;
+					right: 3rem;
+				}
+				width: 100%;
+				color: map-get(map-get($navbar-options, menu-toggle), color);
+				font: map-get(map-get($navbar-options, menu-toggle), font);
+				font-size: 1em;
+				letter-spacing: 0.125em;
+				text-align: right;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				transform-origin: center center;
+
+				&::before {
+					@include transition(
+						$property: (opacity),
+						$duration: map-get(map-get($navbar-options, menu-toggle), duration),
+						$delay: map-get(map-get($navbar-options, menu-toggle), delay),
+						$ease: map-get(map-get($navbar-options, menu-toggle), ease),
+						$optimize: false
+					);
+					content: map-get(map-get($navbar-options, menu-toggle), open-label);
+					opacity: 1;
+				}
+
+				@include break($min: 0, $max: 320px, $orientation: '') {
+					display: none;
+				}
+
+			}
+
+			&:not(.is-open):hover {
+
+				.menubar-toggle-icon {
+
+					span { // TOGGLE LINE
+
+						background: map-get(map-get($navbar-options, menu-toggle), hover-color);
+
+						&::before {
+							right: -0.5em;
+							background: map-get(map-get($navbar-options, menu-toggle), hover-color);
+						}
+
+						&::after {
+							left: -0.5em;
+							background: map-get(map-get($navbar-options, menu-toggle), hover-color);
+						}
+
+					}
+
+					&::after { // BORDER / BACKGROUND
+						border-color: map-get(map-get($navbar-options, menu-toggle), border-hover-color);
+						background: map-get(map-get($navbar-options, menu-toggle), background-hover-color);
+					}
+
+				}
+
+			}
+
+			&.is-open {
+
+				.menubar-toggle-icon {
+
+					span { // TOGGLE LINE
+
+						background: transparent;
+						transform: rotate(180deg);
+
+						&::after,
+						&::before {
+
+							top: 0;
+							left: 1em;
+							background: map-get(map-get($navbar-options, menu-toggle), active-color);
+
+							@include break($min: 0, $max: 375px, $orientation: '') {
+								left: 1em;
+							}
+
+						}
+
+						&::before {
+							transform: rotate(135deg);
+						}
+
+						&::after {
+							transform: rotate(-135deg);
+						}
+
+					}
+
+					&::after {
+						border-color: map-get(map-get($navbar-options, menu-toggle), border-active-color);
+						background: map-get(map-get($navbar-options, menu-toggle), background-active-color);
+					}
+
+				}
+
+				.menubar-toggle-label {
+
+					color: map-get(map-get($navbar-options, menu-toggle), active-color);
+					animation-name: animate-menubar-toggle-is-open;
+
+					&::before {
+						content: map-get(map-get($navbar-options, menu-toggle), close-label);
+						color: map-get(map-get($navbar-options, menu-toggle), active-color);
+					}
+
+				}
+
+			}
+
+			@include break($min: 0, $max: map-get($navbar-options, break), $orientation: '') {
+				display: flex;
+			}
+
+		}
+
+		@include break($min: 0, $max: $tablet, $orientation: '') {
+			padding: {
+				top: 0;
+				right: 2rem;
+				bottom: 0;
+				left: 2rem;
+			}
+		}
+
+	}
+
+	@include break($min: 0, $max: $mobile, $orientation: 'both') {
+		max-height: 100px !important;
+	}
+
+}
+
+
+// MODIFIERS
+.navbar {
+
+	$self: &;
+
+	&.is-open {
+		mix-blend-mode: normal;
+	}
+
+	&.is-ready {
+
+		@if map-get($navbar-options, show-on-scrolling-up) == true {
+			position: fixed;
+		}
+
+	}
+
+	&.is-top {
+		background: map-get($navbar-options, background-color);
+	}
+
+	&.is-not-top {
+
+		@if map-get($navbar-options, show-on-scrolling-up) == true {
+			transform: translate3d(0, - map-get($navbar-options, height), 0);
+		}
+		max-height: map-get($navbar-options, shrink-height);
+		background: map-get($navbar-options, background-alt-color);
+
+		@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+			backdrop-filter: blur(map-get($navbar-options, backdrop-filter));
+			background: map-get($navbar-options, background-alt-color);
+			//background: linear-gradient(to bottom, rgba($charcoal, 1) 0%, rgba($charcoal, 0) 100%);
+		}
+
+		.menubar {
+
+			&-logo:not(.is-open)  {
+
+				.logo {
+
+					color: map-get(map-get($navbar-options, logo), alt-color);
+
+					path {
+						fill: map-get(map-get($navbar-options, logo), alt-color);
+					}
+
+				}
+
+			}
+
+			&-menu:not(.is-open)  {
+
+				ul {
+
+					li {
+
+						color: map-get($navbar-options, text-alt-color);
+
+						&::after {
+							//background: map-get($navbar-options, text-alt-color);
+						}
+
+						&:hover,
+						&.is-active {
+
+							color: map-get($navbar-options, text-hover-color);
+
+							&::after {
+								transform: translateX(-50%) scale3d(1,1,1);
+							}
+
+						}
+
+					}
+
+				}
+
+			}
+
+			&-toggle:not(.is-open) {
+
+				.menubar-toggle-icon {
+
+					span { // TOGGLE LINE
+
+						background: map-get(map-get($navbar-options, menu-toggle), alt-color);
+
+						&::after,
+						&::before {
+							background: map-get(map-get($navbar-options, menu-toggle), alt-color);
+						}
+
+					}
+
+					&::after {
+						border-color: map-get(map-get($navbar-options, menu-toggle), border-alt-color);
+						background: map-get(map-get($navbar-options, menu-toggle), background-alt-color);
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+	&.is-bottom {
+
+		@if map-get($navbar-options, show-on-page-end) == true {
+
+			transform: translate3d(0,0,0);
+			
+		} @else {
+
+			transform: translate3d(0, - map-get($navbar-options, height), 0);
+
+		}
+
+	}
+
+	&.is-not-bottom {
+
+	}
+
+	&.is-scrolling-up {
+
+		@if map-get($navbar-options, show-on-scrolling-up) == true {
+			transform: translate3d(0,0,0);
+		}
+
+	}
+
+	&.is-scrolling-down {
+
+	}
+
+}
+
+
+// LOGIC
+@if map-get($navbar-options, reverse) == true {
+
+	@if map-get(map-get($navbar-options, menu), alignment) == 'left' { 
+
+		.navbar {
+
+			.menubar-menu {
+
+				justify-content: flex-start;
+
+				@if map-get(map-get($navbar-options, cta), allow) == true {
+					margin-left: 2rem;
+				}
+
+			}
+
+		}
+
+	} @else if map-get(map-get($navbar-options, menu), alignment) == 'center' { 
+
+		.navbar {
+
+			.menubar-menu {
+				justify-content: center;
+				margin: {
+					left: 2rem;
+					right: 2rem;
+				};
+			}
+
+		}
+
+	} @else if map-get(map-get($navbar-options, menu), alignment) == 'right' { 
+
+		.navbar {
+
+			.menubar-menu {
+				justify-content: flex-end;
+				margin-right: 2rem;
+			}
+
+		}
+
+	}
+
+} @else {
+
+	@if map-get(map-get($navbar-options, menu), alignment) == 'left' { 
+
+		.navbar {
+
+			.menubar-menu {
+				justify-content: flex-start;
+				margin-left: 2rem;
+			}
+
+		}
+
+	} @else if map-get(map-get($navbar-options, menu), alignment) == 'center' { 
+
+		.navbar {
+
+			.menubar-menu {
+				justify-content: center;
+				margin: {
+					left: 2rem;
+					right: 2rem;
+				};
+			}
+
+		}
+
+	} @else if map-get(map-get($navbar-options, menu), alignment) == 'right' { 
+
+		.navbar {
+
+			.menubar-menu {
+
+				justify-content: flex-end;
+
+				@if map-get(map-get($navbar-options, cta), allow) == true {
+					margin-right: 2rem;
+				}
+				
+			}
+
+		}
+
+	}
+
+}
+
+
+@if map-get($navbar-options, reverse) == true {
+
+	.navbar {
+
+		.menubar {
+
+			flex-direction: row-reverse;
+
+			&-logo {
+				justify-content: flex-end;
+			}
+
+			&-toggle {
+
+				flex-direction: row-reverse;
+				justify-content: flex-start;
+
+				.menu-toggle-label {
+					text-align: left;
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+
+@if map-get( map-get($navbar-options, logo), allow ) == true {
+
+	.navbar {
+
+		.menubar {
+
+			&-logo #{map-get(map-get($navbar-options, logo), desktop-id)} {
+
+				display: block;
+
+				@include break($min: 0, $max: map-get($navbar-options, break), $orientation: '') {
+					display: none;
+				}
+
+			}
+
+			&-logo #{map-get(map-get($navbar-options, logo), mobile-id)} {
+
+				display: none;
+
+				@include break($min: 0, $max: map-get($navbar-options, break), $orientation: '') {
+					display: block;
+				}
+
+			}
+
+		}
+
+	}
+
+} @else {
+
+	.navbar {
+
+		.menubar-logo #{map-get(map-get($navbar-options, logo), mobile-id)} {
+			display: none;
+		}
+
+	}
+
+}
+
+
+// PERSISTENCY
+@if map-get($navbar-options, persistent-navbar) == true {
+
+	.navbar {
+		position: fixed;
+	}
+
+}
+
+
+@if map-get($navbar-options, persistent-toggle) == true {
+
+	.navbar {
+
+		.menubar {
+
+			&-menu {
+
+				ul {
+					display: none;
+				}
+
+			}
+
+			&-toggle {
+				display: flex;
+			}
+
+		}
+
+	}
+
+}
+
+
+// CTA
+@if map-get(map-get($navbar-options, cta), allow) == false {
+
+	.navbar {
+
+		.menubar {
+
+			&-cta {
+				display: none;
+			}
+
+		}
+
+	}
+
+}
+
+
+@if map-get(map-get($navbar-options, cta), truncate) == true {
+
+	.navbar {
+
+		.menubar {
+
+			&-cta {
+
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+
+				p {
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+
+// ANIMATIONS
+@keyframes animate-menubar-toggle-is-open {
+
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0;
+		transform: translate3d(10%,0,0);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translate3d(0,0,0);
+	}
+
+}
+
+
+@keyframes animate-menubar-toggle-is-closed {
+
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0;
+		transform: translate3d(10%,0,0);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translate3d(0,0,0);
+	}
+
+}

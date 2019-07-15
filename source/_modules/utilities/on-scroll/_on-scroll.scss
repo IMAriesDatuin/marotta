@@ -1,0 +1,26 @@
+/* -------------------------------------------------- */
+/* ON SCROLL
+/* -------------------------------------------------- */
+
+// OPTIONS
+$on-scroll-options: (
+	duration: 800ms,
+	delay: 0,
+	ease: ease-out
+);
+
+
+// MAIN
+.lax {
+
+	$self: &;
+
+	@include transition(
+		$property: (all),
+		$duration: map-get($on-scroll-options, duration),
+		$delay: map-get($on-scroll-options, delay),
+		$ease: map-get($on-scroll-options, ease),
+		$optimize: true
+	);
+
+}

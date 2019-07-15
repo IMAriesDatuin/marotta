@@ -1,0 +1,77 @@
+
+# CONTENT
+logos:
+ -
+  id: ''
+  rating: '5'
+  icon: 'google-plus'
+  title: 'Google Plus'
+  description: 'Read more reviews on Google Plus.'
+  link: '#'
+
+
+ -
+  id: ''
+  rating: '5'
+  icon: 'facebook'
+  title: 'Facebook'
+  description: 'Read more reviews on Facebook.'
+  link: '#'
+
+
+ -
+  id: ''
+  rating: '5'
+  icon: 'yelp'
+  title: 'Yelp'
+  description: 'Read more reviews on Yelp.'
+  link: '#'
+
+
+reviews:
+ -
+  id: ''
+  rating: '5'
+  title: 'A relaxing & comfortable experience'
+  summary: 'Nice atmosphere and great staff who are very nice and professional.'
+  name: 'Janice Marie Verner Ray'
+  link: '#'
+
+
+ -
+  id: ''
+  rating: '5'
+  title: 'Staff are very professional and informative about the services and products!'
+  summary: 'Very friendly environment and did not pressure in any way.'
+  name: 'Joyce Sklark'
+  link: '#'
+
+
+ -
+  id: ''
+  rating: '5'
+  title: 'Procedure went great!!'
+  summary: 'Everything was explained thoroughly and praying for great results.<br><br>
+  Thank you all for your professionalism!!!'
+  name: 'Jeri Browning'
+  link: '#'
+
+
+
+ -
+  id: ''
+  rating: '5'
+  title: 'The staff of Marotta Medspa are very caring and professional.'
+  summary: 'I had the Halo laser treatment and BBL. The results are amazing. My sun damage is gone. Returning for a Visia follow-up analysis, I lost 5 years of aging...in 3 weeks! With the gentle encouragement of Cami, I now follow an easy daily routine of Elta MD skincare, never forgetting my sunblock.'
+  name: 'Lisa Tami'  
+  link: '#'
+
+
+
+ -
+  id: ''
+  rating: '5'
+  title: 'Great staff!!'
+  summary: 'Very Knowledgeable. A very clean environment, relaxing atmosphere & calm and comforting experience.'
+  name: 'Kobayashi Maru'  
+  link: '#'

@@ -1,0 +1,45 @@
+/* -------------------------------------------------- */
+/* DROP CAP
+/* -------------------------------------------------- */
+
+.drop-cap {
+
+	text-indent: 0;
+
+	&:first-of-type:first-letter {
+		@include shadow(
+			$type: 'box-shadow',
+			$color: $secondary,
+			$x: 2px,
+			$y: 2px,
+			$blur: 0,
+			$spread: 0,
+			$alpha: 0.5,
+			$strength: 0,
+			$inset: false
+		);
+		float: left;
+		margin: {
+			top: 0rem;
+			right: 1rem;
+			bottom: 0rem;
+			left: 0;
+		}
+		padding: {
+			top: 0.25rem;
+			right: 1rem;
+			bottom: 0.25rem;
+			left: 1rem;
+		}
+		color: $secondary;
+		font: $subheadline;
+		font-size: 4em;
+		text-shadow: -1px -1px 0 $white,
+					 1px -1px 0 $white,
+					 -1px 1px 0 $white,
+					 1px 1px 0 $white;
+		border: thin double $secondary;
+		//background: $secondary;
+	}
+
+}

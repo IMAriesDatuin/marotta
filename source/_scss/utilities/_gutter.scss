@@ -1,0 +1,411 @@
+/* -------------------------------------------------- */
+/* GUTTER
+/* -------------------------------------------------- */
+
+// OPTIONS
+$gutter-direction: (
+	top: 'top',
+	right: 'right',
+	bottom: 'bottom',
+	left: 'left',
+);
+
+
+// MARGINS
+.margin {
+
+	$property: 'margin';
+
+	@each $name-gutter, $gutter in $gutters {
+
+		@each $name-direction, $direction in $gutter-direction {
+
+			&-#{$name-direction}-#{$name-gutter} {
+
+				@include breakpoint($prefix: '-', $suffix: '') {
+					#{$property}#{'-'}#{$direction}: $gutter;
+				}
+
+			}
+
+			&-#{$name-gutter} {
+
+				@include breakpoint($prefix: '-', $suffix: '') {
+					#{$property}: $gutter;
+				}
+
+			}
+
+			&-tb-#{$name-gutter} {
+
+				@include breakpoint($prefix: '-', $suffix: '') {
+
+					#{$property}: {
+						top: $gutter;
+						bottom: $gutter;
+					}
+
+				}
+
+			}
+
+			&-lr-#{$name-gutter} {
+
+				@include breakpoint($prefix: '-', $suffix: '') {
+
+					#{$property}: {
+						left: $gutter;
+						right: $gutter;
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+	&-auto {
+		margin: {
+			top: $gutter;
+			bottom: $gutter;
+		};
+	}
+
+	&-start {
+
+		margin-top: map-get($gutters, xl) * 2;
+
+		@include break($min: 0, $max: $mobile, $orientation: '') {
+
+			margin: {
+				top: map-get($gutters, xl);
+			}
+
+		}
+
+	}
+
+	&-end {
+
+		margin-bottom: map-get($gutters, xl) * 2;
+
+		@include break($min: 0, $max: $mobile, $orientation: '') {
+
+			margin: {
+				bottom: map-get($gutters, xl);
+			}
+
+		}
+
+	}
+
+}
+
+.list-margin {
+
+	$property: 'margin';
+
+	@each $name-gutter, $gutter in $gutters {
+
+		@each $name-direction, $direction in $gutter-direction {
+
+			&-#{$name-direction}-#{$name-gutter} {
+
+				@include breakpoint($prefix: '-', $suffix: ' li') {
+					#{$property}#{'-'}#{$direction}: $gutter;
+				}
+
+			}
+
+			&-#{$name-gutter} {
+
+				@include breakpoint($prefix: '-', $suffix: ' li') {
+					#{$property}: $gutter;
+				}
+
+			}
+
+			&-tb-#{$name-gutter} {
+
+				@include breakpoint($prefix: '-', $suffix: ' li') {
+
+					#{$property}: {
+						top: $gutter;
+						bottom: $gutter;
+					}
+
+				}
+
+			}
+
+			&-lr-#{$name-gutter} {
+
+				@include breakpoint($prefix: '-', $suffix: ' li') {
+
+					#{$property}: {
+						left: $gutter;
+						right: $gutter;
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+
+// PADDING
+.padding {
+
+	$property: 'padding';
+
+	@each $name-gutter, $gutter in $gutters {
+
+		@each $name-direction, $direction in $gutter-direction {
+
+			&-#{$name-direction}-#{$name-gutter} {
+
+				@include breakpoint($prefix: '-', $suffix: '') {
+					#{$property}#{'-'}#{$direction}: $gutter;
+				}
+
+			}
+
+			&-#{$name-gutter} {
+
+				@include breakpoint($prefix: '-', $suffix: '') {
+					#{$property}: $gutter;
+				}
+
+			}
+
+			&-tb-#{$name-gutter} {
+
+				@include breakpoint($prefix: '-', $suffix: '') {
+
+					#{$property}: {
+						top: $gutter;
+						bottom: $gutter;
+					}
+
+				}
+
+			}
+
+			&-lr-#{$name-gutter} {
+
+				@include breakpoint($prefix: '-', $suffix: '') {
+
+					#{$property}: {
+						left: $gutter;
+						right: $gutter;
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+	&-auto {
+		padding: {
+			top: $gutter;
+			bottom: $gutter;
+		};
+	}
+
+}
+
+.list-padding {
+
+	$property: 'padding';
+
+	@each $name-gutter, $gutter in $gutters {
+
+		@each $name-direction, $direction in $gutter-direction {
+
+			&-#{$name-direction}-#{$name-gutter} {
+
+				@include breakpoint($prefix: '-', $suffix: ' li') {
+					#{$property}#{'-'}#{$direction}: $gutter;
+				}
+
+			}
+
+			&-#{$name-gutter} {
+
+				@include breakpoint($prefix: '-', $suffix: ' li') {
+					#{$property}: $gutter;
+				}
+
+			}
+
+			&-tb-#{$name-gutter} {
+
+				@include breakpoint($prefix: '-', $suffix: ' li') {
+
+					#{$property}: {
+						top: $gutter;
+						bottom: $gutter;
+					}
+
+				}
+
+			}
+
+			&-lr-#{$name-gutter} {
+
+				@include breakpoint($prefix: '-', $suffix: ' li') {
+
+					#{$property}: {
+						left: $gutter;
+						right: $gutter;
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+
+// SPACING
+.spacing {
+
+	@each $name-gutter, $gutter in $gutters {
+
+		@each $name-direction, $direction in $gutter-direction {
+
+			&-#{$name-direction}-#{$name-gutter} {
+
+				@include breakpoint($prefix: '-', $suffix: '') {
+					#{'margin-'}#{$direction}: $gutter;
+					#{'padding-'}#{$direction}: $gutter;
+				}
+
+			}
+
+			&-#{$name-gutter} {
+
+				@include breakpoint($prefix: '-', $suffix: '') {
+					margin: $gutter;
+					padding: $gutter;
+				}
+
+			}
+
+			&-tb-#{$name-gutter} {
+
+				@include breakpoint($prefix: '-', $suffix: '') {
+
+					margin: {
+						top: $gutter;
+						bottom: $gutter;
+					}
+					padding: {
+						top: $gutter;
+						bottom: $gutter;
+					}
+
+				}
+
+			}
+
+			&-lr-#{$name-gutter} {
+
+				@include breakpoint($prefix: '-', $suffix: '') {
+
+					margin: {
+						left: $gutter;
+						right: $gutter;
+					}
+					padding: {
+						left: $gutter;
+						right: $gutter;
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+.list-spacing {
+
+	@each $name-gutter, $gutter in $gutters {
+
+		@each $name-direction, $direction in $gutter-direction {
+
+			&-#{$name-direction}-#{$name-gutter} {
+
+				@include breakpoint($prefix: '-', $suffix: ' li') {
+					#{'margin-'}#{$direction}: $gutter;
+					#{'padding-'}#{$direction}: $gutter;
+				}
+
+			}
+
+			&-#{$name-gutter} {
+
+				@include breakpoint($prefix: '-', $suffix: ' li') {
+					margin: $gutter;
+					padding: $gutter;
+				}
+
+			}
+
+			&-tb-#{$name-gutter} {
+
+				@include breakpoint($prefix: '-', $suffix: ' li') {
+
+					margin: {
+						top: $gutter;
+						bottom: $gutter;
+					}
+					padding: {
+						top: $gutter;
+						bottom: $gutter;
+					}
+
+				}
+
+			}
+
+			&-lr-#{$name-gutter} {
+
+				@include breakpoint($prefix: '-', $suffix: ' li') {
+
+					margin: {
+						left: $gutter;
+						right: $gutter;
+					}
+					padding: {
+						left: $gutter;
+						right: $gutter;
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+}

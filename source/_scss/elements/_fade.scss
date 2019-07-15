@@ -1,0 +1,81 @@
+/* -------------------------------------------------- */
+/* FADE
+/* -------------------------------------------------- */
+
+.fade {
+
+	&-top {
+
+		@include breakpoint($prefix: '-', $suffix: '::before') {
+
+			@include fade($type: 'top', $color: $white, $alpha: 1, $scale: 50%, $start: 0, $stop: 100%, $order: 1, $prefix: '', $suffix: '', $clickable: false);
+
+		}
+
+	}
+
+	&-bottom {
+
+		@include breakpoint($prefix: '-', $suffix: '::before') {
+
+			@include fade($type: 'bottom', $color: $white, $alpha: 1, $scale: 50%, $start: 0, $stop: 100%, $order: 1, $prefix: '', $suffix: '', $clickable: false);
+
+		}
+
+	}
+
+	&-left {
+
+		@include breakpoint($prefix: '-', $suffix: '::before') {
+
+			@include fade($type: 'left', $color: $white, $alpha: 1, $scale: 25%, $start: 0, $stop: 100%, $order: auto, $prefix: '', $suffix: '', $clickable: false);
+
+		}
+
+	}
+
+	&-right {
+
+		@include breakpoint($prefix: '-', $suffix: '::before') {
+
+			@include fade($type: 'right', $color: $white, $alpha: 1, $scale: 25%, $start: 0, $stop: 100%, $order: 1, $prefix: '', $suffix: '', $clickable: false);
+
+		}
+
+	}
+
+	&-tb {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+
+			@include fade($type: 'top', $color: $white, $alpha: 1, $scale: 50%, $start: 0, $stop: 100%, $order: 2, $prefix: '', $suffix: '::before', $clickable: false);
+
+			@include fade($type: 'bottom', $color: $white, $alpha: 1, $scale: 50%, $start: 0, $stop: 100%, $order: 1, $prefix: '', $suffix: '::after', $clickable: false);
+
+		}
+
+	}
+
+	&-lr {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+
+			@include fade($type: 'left', $color: $white, $alpha: 1, $scale: 25%, $start: 0, $stop: 100%, $order: 2, $prefix: '', $suffix: '::before', $clickable: false);
+
+			@include fade($type: 'right', $color: $white, $alpha: 1, $scale: 25%, $start: 0, $stop: 100%, $order: 1, $prefix: '', $suffix: '::after', $clickable: false);
+
+		}
+
+	}
+
+	&-full {
+
+		@include breakpoint($prefix: '-', $suffix: '::before') {
+
+			@include fade($type: 'full', $color: $white, $alpha: 1, $scale: 50%, $start: 0, $stop: 100%, $order: 1, $prefix: '', $suffix: '', $clickable: false);
+
+		}
+
+	}
+
+}

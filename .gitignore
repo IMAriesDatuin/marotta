@@ -1,0 +1,14 @@
+.aws
+.DS_Store
+_Assets
+_Configurations
+_Docs
+_Packages
+_Source
+_Stock
+_Versions
+_Wireframe
+node_modules
+rev.json
+server.json
+npm-debug.log

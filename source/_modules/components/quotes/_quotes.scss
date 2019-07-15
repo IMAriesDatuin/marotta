@@ -1,0 +1,137 @@
+/* -------------------------------------------------- */
+/* QUOTES
+/* -------------------------------------------------- */
+
+// OPTIONS
+$quotes-options: (
+	duration: 600ms,
+	delay: 0,
+	ease: $easeWipe
+);
+
+
+// MAIN
+.quotes {
+
+	$self: &;
+
+	pointer-events: none;
+	overflow: hidden;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: center;
+	//position: relative;
+	width: 100%;
+	height: 100%;
+	//min-height: 100vh;
+	//white-space: pre-line;
+
+	.quote {
+
+		@extend .fix-font-render;
+		overflow: visible;
+		position: absolute;
+		left: 50%;
+		//padding-bottom: 6rem;
+		width: 100%;
+		//font-size: inherit;
+		//color: inherit;
+		letter-spacing: 0;
+		line-height: 0.75em;
+		//text-overflow: ellipsis;
+		//white-space: nowrap;
+		//white-space: pre-line;
+		word-wrap: break-word;
+		transform-origin: center center;
+		transform: translateX(-50%);
+
+		.split-text {
+
+			@include transition(
+					$property: (filter),
+					$duration: map-get($quotes-options, duration),
+					$delay: map-get($quotes-options, delay),
+					$ease: map-get($quotes-options, ease),
+					$optimize: false
+			);
+			padding: {
+				top: 0.5rem;
+				bottom: 0.5rem;
+			};
+			filter: blur(4px);
+
+			&-reveal {
+				filter: blur(0);
+			}
+
+		}
+
+
+	}
+	
+}
+
+
+// MODIFIERS
+.quotes {
+
+	$self: &;
+
+	#{$self}-element {
+		
+	}
+
+	&.is-ready {
+
+	}
+
+	&.is-top {
+
+	}
+
+	&.is-not-top {
+
+	}
+
+	&.is-bottom {
+
+	}
+
+	&.is-not-bottom {
+
+	}
+
+	&.is-scrolling-up {
+
+	}
+
+	&.is-scrolling-down {
+
+	}
+
+}
+
+
+// ANIMATIONS
+@keyframes animate-quote {
+
+	0% {
+		transform: scale3d(0,1,1);
+		transform-origin: left center;
+	}
+
+	50% {
+		//background: $accent;
+		transform: scale3d(1,1,1);
+		transform-origin: right center;
+	}
+
+	100% {
+		//background: $accent;
+		transform: scale3d(0,1,1);
+		transform-origin: right center;
+	}
+
+}

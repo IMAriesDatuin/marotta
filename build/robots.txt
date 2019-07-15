@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /assets/
+Disallow: /cgi-bin/
+Disallow: /downloads/
+Disallow: /fonts/
+Disallow: /scripts/
+Sitemap: https://imariesdatuin.github.io/marotta/build/sitemap.xml

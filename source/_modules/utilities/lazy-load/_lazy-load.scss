@@ -1,0 +1,150 @@
+/* -------------------------------------------------- */
+/* INTERSECTION OBSERVER (LAZY LOAD)
+/* -------------------------------------------------- */
+
+// OPTIONS
+$lazy-load-options: (
+	background-color: $white,
+	duration: 1400ms,
+	delay: 0,
+	ease: $easeWipe
+);
+
+
+// CONTAINER
+.lazy {
+
+	overflow: hidden;
+	position: relative;
+
+	&::before {
+		@include transition(
+			$property: (all),
+			$duration: map-get($lazy-load-options, duration),
+			$delay: map-get($lazy-load-options, delay),
+			$ease: map-get($lazy-load-options, ease),
+			$optimize: false
+		);
+		content: '';
+		z-index: 1;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: map-get($lazy-load-options, background-color);
+		transform: scale3d(1,1,1);
+		transform-origin: right center;
+	}
+
+	&.is-loaded {
+
+		&::before {
+			transform: scale3d(0,1,1);
+		}
+
+	}
+
+	&.on-error {
+
+		&::before {
+			transform: scale3d(0,1,1);
+		}
+
+		background-image: url(../assets/error-static.gif);
+		background-repeat: repeat;
+
+	}
+
+}
+
+
+// MEDIA
+img.lazy-load {
+	@include transition(
+		$property: (all),
+		$duration: map-get($lazy-load-options, duration),
+		$delay: map-get($lazy-load-options, delay),
+		$ease: map-get($lazy-load-options, ease),
+		$optimize: false
+	);
+	opacity: 0;
+	//visibility: hidden;
+	//transform: scale3d(1.25,1.25,1);
+	transform-origin: center center;
+	//transform-style: preserve-3d;
+	filter: blur(4px);
+	//filter: url("#svg-filter-glitch");
+
+	&.is-loaded,
+	&.on-error {
+		opacity: 1;
+		//visibility: visible;
+		//transform: scale3d(1,1,1);
+		filter: blur(0);
+	}
+
+}
+
+video.lazy-load {
+
+	@include transition(
+		$property: (all),
+		$duration: map-get($lazy-load-options, duration),
+		$delay: map-get($lazy-load-options, delay) + 100ms,
+		$ease: map-get($lazy-load-options, ease),
+		$optimize: false
+	);
+	opacity: 0;
+
+	&.is-loaded,
+	&.on-error {
+		opacity: 1;
+	}
+
+}
+
+
+// BACKGROUND IMAGE
+div.lazy-load:not(img):not(video) {
+
+	@include transition(
+		$property: (all),
+		$duration: map-get($lazy-load-options, duration) * 0.5,
+		$delay: map-get($lazy-load-options, delay),
+		$ease: linear,
+		$optimize: false
+	);
+
+	&[data-bg] {
+		//opacity: 0;
+	}
+
+	&[data-was-processed='true'] {
+		//opacity: 1;
+	}
+
+}
+
+
+// HACKS (YUCK)
+/* Prevents img without src to appear */
+img:not([src]) {
+	visibility: hidden;
+}
+
+/* IE Edge fix for IntersectionObserver. */
+img[data-src],
+img[data-srcset] {
+	display: block;
+	min-height: 1px;
+}
+
+/* Firefox fix for load anomaly. */
+@-moz-document url-prefix() {
+
+	img:-moz-loading {
+		visibility: hidden;
+	}
+	
+}

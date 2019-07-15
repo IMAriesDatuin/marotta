@@ -1,0 +1,110 @@
+
+<!-- CONTENT: HERO -->
+<section id="hero" class="hero grid-x align-middle align-center on-scroll no-gutter no-width no-selection" role="banner">
+
+
+	<!-- CONTENT -->
+	<div class="hero-container">
+
+
+		<!-- QUOTES -->
+		<div class="hero-quotes quotes"> 
+
+			{{#each quotes.content}}
+			<p id="{{ id }}" class="quote">{{ quote }}</p>
+			{{/each}}
+
+		</div>
+		<!-- // QUOTES -->
+
+
+		<!-- BUTTON GROUP -->
+		<div class="hero-button-group button-group center-auto io">
+
+
+			<!-- BUTTON -->
+			<a href="#" class="button button-theme button-theme-reverse io-button">
+				<span class="button-label">Book an appointment</span>
+				<span class="button-icon fal fa-calendar"></span>
+				<span class="button-icon fal fa-long-arrow-right"></span>
+			</a>
+			<!-- // BUTTON -->	
+
+
+			<!-- BUTTON -->
+			<a href="#" class="button button-theme button-theme-reverse io-button hide-mobile-portrait">
+				<span class="button-label">Shop online</span>
+				<span class="button-icon fal fa-shopping-bag"></span>
+				<span class="button-icon fal fa-long-arrow-right"></span>
+			</a>
+			<!-- // BUTTON -->
+
+
+		</div>
+		<!-- BUTTON GROUP -->
+
+
+		<!-- SOCIAL -->
+		<ul class="hero-social social">
+
+			{{#each social.content}}
+			<li>
+
+				<a href="{{ link }}" target="_blank" aria-label="{{ description }}">
+
+					<p>{{ title }}</p>
+					<span class="fab fa-{{ icon }}" aria-hidden="true"></span>
+
+				</a>
+
+			</li>
+			{{/each}}
+
+		</ul>
+		<!-- // SOCIAL -->
+
+
+		<!-- SCROLL HINT -->
+		<a href="#welcome" class="hero-scroll-hint" aria-label="Welcome to --name">
+
+			<div class="scroll-hint is-animating headroom">
+
+				<span class="scroll-hint-line"></span>
+				
+				<div class="scroll-hint-arrow">
+					<span></span>
+					<span></span>
+				</div>
+
+			</div>
+
+		</a>
+		<!-- // SCROLL HINT -->
+
+
+	</div>
+	<!-- // CONTENT -->
+
+
+	<!-- OVERLAY -->
+	<span class="hero-overlay lax" data-lax-opacity="0 0.5, vh 1 | loop=0 offset=0 speed=1" data-lax-anchor="self"></span>
+	<!-- // OVERLAY -->
+
+
+	<!-- VIDEO -->
+	<div class="hero-media lazy">
+
+		<video data-src="{{ root }}{{ assets }}placeholder/video.mp4" class="fit lazy-load" loop muted playsinline autoplay="true" data-object-fit="cover" data-object-position="center center" tabindex="0">
+			<source type="video/mp4" data-src="{{ root }}{{ assets }}placeholder/video.mp4"/>
+			Sorry, your browser doesn't support embedded videos.
+		</video>
+
+	</div>
+	<!-- VIDEO -->
+
+
+	{{> block-cap-double-bottom}}
+
+
+</section>
+<!-- // CONTENT: HERO -->

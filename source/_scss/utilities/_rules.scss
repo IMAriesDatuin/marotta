@@ -1,0 +1,1149 @@
+/* -------------------------------------------------- */
+/* OVERFLOW
+/* -------------------------------------------------- */
+
+.overflow {
+
+	&-auto {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			overflow: auto;
+		}
+
+	}
+
+	&-hidden {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			overflow: hidden
+		}
+
+	}
+
+	&-scroll {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			overflow: scroll;
+		}
+
+	}
+
+	&-visible {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			overflow: visible;
+		}
+
+	}
+
+	&-x {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			overflow: {
+				x: scroll;
+				y: hidden;
+			}
+		}
+
+	}
+
+	&-y {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			overflow: {
+				x: hidden;
+				y: scroll;
+			}
+		}
+
+	}
+
+	&-contain {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			overscroll-behavior: contain;
+		}
+
+	}
+
+	&-none {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			overscroll-behavior: none;
+		}
+
+	}
+
+}
+
+
+/* -------------------------------------------------- */
+/* OPACITY
+/* -------------------------------------------------- */
+
+.opacity {
+
+	@each $name, $number in $numbers {
+
+		&-#{$name} {
+
+			@include breakpoint($prefix: '-', $suffix: '') {
+				opacity: $number;
+			}
+
+		}
+
+	}
+
+}
+
+
+/* -------------------------------------------------- */
+/* DISPLAY / VISIBILITY
+/* -------------------------------------------------- */
+
+.display {
+
+	&-block {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			display: block;
+		}
+
+	}
+
+	&-inline {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			display: inline;
+		}
+
+	}
+
+	&-inline-block {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			display: inline-block;
+		}
+
+	}
+
+}
+
+.hide {
+
+	@include breakpoint($prefix: '-', $suffix: '') {
+		display: none !important;
+	}
+
+}
+
+.show {
+
+	@include breakpoint($prefix: '-', $suffix: '') {
+		display: block;
+	}
+
+}
+
+.hidden {
+
+	@include breakpoint($prefix: '-', $suffix: '') {
+		visibility: hidden;
+	}
+
+}
+
+.visible {
+
+	@include breakpoint($prefix: '-', $suffix: '') {
+		visibility: visible;
+	}
+
+}
+
+
+/* -------------------------------------------------- */
+/* POSITION
+/* -------------------------------------------------- */
+
+.position {
+
+	&-absolute {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			position: absolute;
+		}
+
+	}
+
+	&-fixed {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			position: fixed;
+		}
+
+	}
+
+	&-relative {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			position: relative;
+		}
+
+	}
+
+	&-static {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			position: static;
+		}
+
+	}
+
+	&-sticky {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			position: sticky;
+		}
+
+	}
+
+	// Will reset the element position to be part of the normal page flow.
+	&-reset {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			position: relative;
+			top: auto;
+			right: auto;
+			bottom: auto;
+			left: auto;
+			//width: 100%;
+		}
+
+	}
+
+}
+
+
+/* -------------------------------------------------- */
+/* ALIGNMENT
+/* -------------------------------------------------- */
+
+.top {
+
+	@include breakpoint($prefix: '-', $suffix: '') {
+		top: 0;
+		bottom: auto;
+	}
+
+}
+
+.right {
+
+	@include breakpoint($prefix: '-', $suffix: '') {
+		left: auto;
+		right: 0;
+	}
+
+	&-auto {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			margin: { 
+				left: auto;
+				//right: 0;
+			}
+		}
+
+	}
+
+}
+
+.bottom {
+
+	@include breakpoint($prefix: '-', $suffix: '') {
+		top: auto;
+		bottom: 0;
+	}
+
+}
+
+.left {
+
+	@include breakpoint($prefix: '-', $suffix: '') {
+		left: 0;
+		right: auto;
+	}
+
+	&-auto {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			margin: { 
+				//left: 0;
+				right: auto;
+			}
+		}
+
+	}
+
+}
+
+.center {
+
+	&-auto { // |
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			margin: {
+				left: auto;
+				right: auto;
+			}
+		}
+
+	}
+
+	&-v { // |
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			position: absolute;
+			top: 50%;
+			bottom: auto;
+			transform: translateY(-50%);
+		}
+
+	}
+
+	&-h { // -
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			position: absolute;
+			left: 50%;
+			right: auto;
+			transform: translateX(-50%);
+		}
+
+	}
+
+	&-vh { // +
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			position: absolute;
+			top: 50%;
+			right: auto;
+			bottom: auto;
+			left: 50%;
+			transform: translate(-50%,-50%);
+		}
+
+	}
+
+}
+
+.flex {
+
+	display: flex;
+
+	&-baseline {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			align-items: baseline;
+		}
+
+	}
+
+	&-inline {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			display: inline-flex;
+		}
+
+	}
+
+	&-top {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			align-items: flex-start;
+		}
+
+	}
+
+	&-right {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			justify-content: flex-end;
+		}
+
+	}
+
+	&-bottom {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			align-items: flex-end;
+		}
+
+	}
+
+	&-left {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			justify-content: flex-start;
+		}
+
+	}
+
+	&-v {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			align-items: center;
+		}
+
+	}
+
+	&-h {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			justify-content: center;
+		}
+
+	}
+
+	&-vh {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			align-items: center;
+			justify-content: center;
+		}
+
+	}
+
+	&-nowrap {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			flex-wrap: nowrap;
+		}
+
+	}
+
+	&-wrap {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			flex-wrap: wrap;
+		}
+
+	}
+
+	&-wrap-reverse {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			flex-wrap: wrap-reverse;
+		}
+
+	}
+
+	&-column {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			flex-direction: column;
+		}
+
+	}
+
+	&-row {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			flex-direction: row;
+		}
+
+	}
+
+	&-column-reverse {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			flex-direction: column-reverse;
+		}
+
+	}
+
+	&-row-reverse {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			flex-direction: row-reverse;
+		}
+
+	}
+
+	&-around {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			align-items: space-around;
+			justify-content: space-around;
+		}
+
+	}
+
+	&-evenly {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			justify-content: space-evenly;
+		}
+
+	}
+
+	&-between {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			align-items: space-between;
+			justify-content: space-between;
+		}
+
+	}
+
+	&-stretch {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			align-items: stretch;
+		}
+
+	}
+
+	&-auto {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			flex-basis: auto;
+		}
+
+	}
+
+	&-expand {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			flex-basis: 100%;
+			flex-grow: 1;
+		}
+
+	}
+
+	&-shrink {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			flex-basis: 10%;
+			flex-shrink: 1;
+		}
+
+	}
+
+	&-25 {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			flex-basis: 25%;
+		}
+
+	}
+
+	&-50 {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			flex-basis: 50%;
+		}
+
+	}
+
+	&-75 {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			flex-basis: 50%;
+		}
+
+	}
+
+	&-100 {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			flex-basis: 100%;
+		}
+
+	}
+
+}
+
+.flex-self {
+
+	&-baseline {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			align-self: baseline;
+		}
+
+	}
+
+	&-top {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			align-self: flex-start;
+		}
+
+	}
+
+	&-bottom {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			align-self: flex-end;
+		}
+
+	}
+
+	&-stretch {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			align-self: stretch;
+		}
+
+	}
+
+	&-v {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			align-self: center;
+		}
+
+	}
+
+}
+
+.float {
+
+	&-left {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			float: left;
+		}
+
+	}
+
+	&-right {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			float: right;
+		}
+
+	}
+
+}
+
+.v-align {
+
+	&-baseline {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			vertical-align: baseline;
+		}
+
+	}
+
+	&-top {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			vertical-align: top;
+		}
+
+	}
+
+	&-middle {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			vertical-align: middle;
+		}
+
+	}
+
+	&-bottom {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			vertical-align: bottom;
+		}
+
+	}
+
+	&-sub {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			vertical-align: sub;
+		}
+
+	}
+
+	&-super {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			vertical-align: super;
+		}
+
+	}
+
+	&-text-top {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			vertical-align: text-top;
+		}
+
+	}
+
+	&-text-bottom {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			vertical-align: text-bottom;
+		}
+
+	}
+
+}
+
+
+/* -------------------------------------------------- */
+/* RADIUS / ROUND
+/* -------------------------------------------------- */
+
+.object {
+
+	&-contain { 
+		object-fit: contain
+	}
+
+	&-cover {
+		object-fit: cover
+	}
+
+	&-fill {
+		object-fit: fill
+	}
+
+	&-fill {
+		object-fit: fill
+	}
+
+	&-none {
+		object-fit: none
+	}
+
+	&-scale-down {
+		object-fit: scale-down
+	}
+
+}
+
+
+/* -------------------------------------------------- */
+/* RADIUS / ROUND
+/* -------------------------------------------------- */
+
+.round {
+
+	@each $name, $amount in $amounts {
+
+		&-#{$name} {
+
+			@include breakpoint($prefix: '-', $suffix: '') {
+
+				border: {
+					radius: pxtoem($amount);
+				}
+
+				&-hover:hover,
+				&-focus:focus {
+					border: {
+						radius: pxtoem($amount);
+					}
+				}
+
+			}
+
+		}
+
+		&-full {
+
+			@include breakpoint($prefix: '-', $suffix: '') {
+
+				border: {
+					radius: 50%;
+				}
+
+				&-hover:hover,
+				&-focus:focus {
+					border: {
+						radius: 50%;
+					}
+				}
+
+			}
+
+		}
+
+	}
+
+	@each $name, $direction in $directions {
+
+		&-#{$name} {
+
+			@include breakpoint($prefix: '-', $suffix: '') {
+
+				@if $direction == 'top' {
+
+					border: {
+						//top-left-radius: 0;
+						//top-right-radius: 0;
+						bottom-left-radius: 0;
+						bottom-right-radius: 0;
+					}
+
+				}
+
+				@else if $direction == 'right' {
+
+					border: {
+						top-left-radius: 0;
+						//top-right-radius: 0;
+						bottom-left-radius: 0;
+						//bottom-right-radius: 0;
+					}
+
+				}
+
+				@else if $direction == 'bottom' {
+
+					border: {
+						top-left-radius: 0;
+						top-right-radius: 0;
+						//bottom-left-radius: 0;
+						//bottom-right-radius: 0;
+					}
+
+				}
+
+				@else if $direction == 'left' {
+
+					border: {
+						//top-left-radius: 0;
+						top-right-radius: 0;
+						//bottom-left-radius: 0;
+						bottom-right-radius: 0;
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+	&-top-none {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			border: {
+				top-left-radius: 0;
+				top-right-radius: 0;
+				//bottom-left-radius: 0;
+				//bottom-right-radius: 0;
+			}
+		}
+		
+	}
+
+	&-right-none {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			border: {
+				//top-left-radius: 0;
+				top-right-radius: 0;
+				//bottom-left-radius: 0;
+				bottom-right-radius: 0;
+			}
+		}
+
+	}
+
+	&-bottom-none {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			border: {
+				//top-left-radius: 0;
+				//top-right-radius: 0;
+				bottom-left-radius: 0;
+				bottom-right-radius: 0;
+			}
+
+		}
+
+	}
+
+	&-left-none {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			border: {
+				top-left-radius: 0;
+				//top-right-radius: 0;
+				bottom-left-radius: 0;
+				//bottom-right-radius: 0;
+			}
+		}
+
+	}
+
+}
+
+
+/* -------------------------------------------------- */
+/* STACK ORDER (Z-INDEX)
+/* -------------------------------------------------- */
+
+.z {
+
+	@each $name, $number in $numbers {
+
+		&-#{$name} {
+
+			@include breakpoint($prefix: '-', $suffix: '') {
+				z-index: $name;
+			}
+
+		}
+
+	}
+
+}
+
+.bring-to-front {
+
+	@include breakpoint($prefix: '-', $suffix: '') {
+		z-index: 9999;
+	}
+
+}
+
+.send-to-back {
+
+	@include breakpoint($prefix: '-', $suffix: '') {
+		z-index: -1;
+	}
+
+}
+
+
+/* -------------------------------------------------- */
+/* CURSOR
+/* -------------------------------------------------- */
+
+.cursor {
+
+	&-alias {
+		cursor: alias;
+	}
+
+	&-all-scroll {
+		cursor: all-scroll;
+	}
+
+	&-auto {
+		cursor: auto;
+	}
+
+	&-cell {
+		cursor: cell;
+	}
+
+	&-context-menu {
+		cursor: context-menu;
+	}
+
+	&-col-resize {
+		cursor: col-resize;
+	}
+
+	&-copy {
+		cursor: copy;
+	}
+
+	&-crosshair {
+		cursor: crosshair;
+	}
+
+	&-default {
+		cursor: default;
+	}
+
+	&-e-resize {
+		cursor: e-resize;
+	}
+
+	&-ew-resize {
+		cursor: ew-resize;
+	}
+
+	&-grab {
+		cursor: grab;
+	}
+
+	&-grabbing {
+		cursor: grabbing;
+	}
+
+	&-help {
+		cursor: help;
+	}
+
+	&-move {
+		cursor: move;
+	}
+
+	&-n-resize {
+		cursor: n-resize;
+	}
+
+	&-ne-resize {
+		cursor: ne-resize;
+	}
+
+	&-nesw-resize {
+		cursor: nesw-resize;
+	}
+
+	&-ns-resize {
+		cursor: ns-resize;
+	}
+
+	&-nw-resize {
+		cursor: nw-resize;
+	}
+
+	&-nwse-resize {
+		cursor: nwse-resize;
+	}
+
+	&-no-drop {
+		cursor: no-drop;
+	}
+
+	&-none {
+		cursor: none;
+	}
+
+	&-not-allowed {
+		cursor: not-allowed;
+	}
+
+	&-pointer {
+		cursor: pointer;
+	}
+
+	&-progress {
+		cursor: progress;
+	}
+
+	&-row-resize {
+		cursor: row-resize;
+	}
+
+	&-s-resize {
+		cursor: s-resize;
+	}
+
+	&-se-resize {
+		cursor: se-resize;
+	}
+
+	&-sw-resize {
+		cursor: sw-resize;
+	}
+
+	&-text {
+		cursor: text;
+	}
+
+	&-w-resize {
+		cursor: w-resize;
+	}
+
+	&-wait {
+		cursor: wait;
+	}
+
+	&-zoom-in {
+		cursor: zoom-in;
+	}
+
+	&-zoom-out {
+		cursor: zoom-out;
+	}
+
+}
+
+
+/* -------------------------------------------------- */
+/* DISABLED
+/* -------------------------------------------------- */
+
+.no {
+
+	&-pointer {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			cursor: pointer;
+			pointer-events: none;
+		}
+
+	}
+
+	&-selection {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			user-select: none;
+		}
+
+	}
+
+	&-scroll {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			overflow: {
+				x: hidden;
+				y: hidden;
+			}
+		}
+
+	}
+
+	&-scrollbar {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			-ms-overflow-style: none;
+		}
+
+		@include breakpoint($prefix: '-', $suffix: '::-webkit-scrollbar') {
+			display: none;
+		}
+
+	}
+
+	&-touch-callout {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			-webkit-touch-callout: none;
+			-moz-touch-callout: none;
+			-ms-user-touch-callout: none;
+			touch-callout: none;
+		}
+
+	}
+	
+	&-touch-scroll {
+
+		@include breakpoint($prefix: '-', $suffix: '') {
+			-webkit-overflow-scrolling: auto;
+		}
+
+	}
+
+	&-transition {
+		transition-duration: 0 !important;
+	}
+
+}

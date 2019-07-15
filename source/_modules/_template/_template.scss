@@ -1,0 +1,104 @@
+/* -------------------------------------------------- */
+/* COMPONENT
+/* -------------------------------------------------- */
+
+// OPTIONS
+$component-options: (
+	text-color: $primary,
+	text-hover-color: $white,
+	active-text-color: $black,
+
+	background-color: $white,
+	background-hover-color: $primary,
+	active-background-color: $white,
+
+	duration: 800ms,
+	delay: 0,
+	ease: $easeNatural
+);
+
+
+// MAIN
+.component {
+
+	$self: &;
+
+	@include transition(
+		$property: (opacity),
+		$duration: map-get($component-options, duration),
+		$delay: map-get($component-options, duration),
+		$ease: map-get($component-options, ease),
+		$optimize: false
+	);
+
+	#{$self}-element {
+		
+	}
+
+	@include break($min: 0, $max: $mobile, $orientation: '') {
+		//display: none;
+	}
+	
+}
+
+
+// MODIFIERS
+.component {
+
+	$self: &;
+
+	#{$self}-element {
+		
+	}
+
+	&.is-ready {
+
+	}
+
+	&.is-top {
+
+	}
+
+	&.is-not-top {
+
+	}
+
+	&.is-bottom {
+
+	}
+
+	&.is-not-bottom {
+
+	}
+
+	&.is-scrolling-up {
+
+	}
+
+	&.is-scrolling-down {
+
+	}
+
+}
+
+
+// ANIMATIONS
+@keyframes animate-component {
+
+	from {
+
+	}
+
+	to {
+
+	}
+
+}
+
+
+// LOGIC
+@if null == true {
+
+} @else {
+
+}

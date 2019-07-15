@@ -1,0 +1,57 @@
+/* -------------------------------------------------- */
+/* BLOCKER
+/* -------------------------------------------------- */
+
+$blocker-options: (
+	opacity: 1,
+	background-color: $white,
+	duration: 400ms,
+	delay: 0,
+	ease: $easeNatural
+);
+
+
+//MAIN
+.blocker {
+
+	@include transition(
+		$property: (opacity),
+		$duration: map-get($blocker-options, duration),
+		$delay: map-get($blocker-options, delay),
+		$ease: map-get($blocker-options, ease),
+		$optimize: false
+	);
+	cursor: default;
+	pointer-events: none;
+	opacity: 0;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	min-height: 100vh;
+	background: rgba( map-get($blocker-options, background-color) , map-get($blocker-options, opacity) );
+
+}
+
+
+// MODIFIERS
+html {
+
+	&.is-locking {
+
+		body {
+
+			.blocker {
+				pointer-events: auto;
+				opacity: 1;
+			}
+
+		}
+
+	}
+
+}
